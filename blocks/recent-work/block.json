@@ -1,0 +1,15 @@
+{
+  "name": "acf/recent-work",
+  "title": "Recent Work",
+  "description": "Portfolio video showcase with hover effects.",
+  "category": "skyeye",
+  "icon": "format-video",
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "blocks/recent-work/render.php"
+  },
+  "supports": {
+    "align": false,
+    "anchor": true
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "name": "acf/form-section",
+  "title": "Form Section",
+  "description": "Contact form section with animated heading.",
+  "category": "skyeye",
+  "icon": "feedback",
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "blocks/form-section/render.php"
+  },
+  "supports": {
+    "align": false,
+    "anchor": true
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "acf/hero",
+  "title": "Hero",
+  "description": "Full-screen hero with video background and animated text.",
+  "category": "skyeye",
+  "icon": "video-alt3",
+  "keywords": ["hero", "video", "banner"],
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "blocks/hero/render.php"
+  },
+  "supports": {
+    "align": false,
+    "anchor": true
+  }
+}

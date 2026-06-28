@@ -1,0 +1,15 @@
+{
+  "name": "acf/callout",
+  "title": "Callout",
+  "description": "Marketing callout with staggered image reveals.",
+  "category": "skyeye",
+  "icon": "megaphone",
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "blocks/callout/render.php"
+  },
+  "supports": {
+    "align": false,
+    "anchor": true
+  }
+}

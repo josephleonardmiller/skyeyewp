@@ -1,0 +1,15 @@
+{
+  "name": "acf/contact-section",
+  "title": "Contact Section",
+  "description": "Full-screen contact section with video background.",
+  "category": "skyeye",
+  "icon": "email",
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "blocks/contact-section/render.php"
+  },
+  "supports": {
+    "align": false,
+    "anchor": true
+  }
+}

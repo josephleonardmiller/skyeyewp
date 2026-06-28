@@ -1,0 +1,15 @@
+{
+  "name": "acf/about",
+  "title": "About",
+  "description": "About section with image reveal and text animations.",
+  "category": "skyeye",
+  "icon": "admin-users",
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "blocks/about/render.php"
+  },
+  "supports": {
+    "align": false,
+    "anchor": true
+  }
+}
