@@ -1,0 +1,37 @@
+name: Deploy to Hostinger
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build assets
+        run: npm run build
+
+      - name: Deploy via rsync
+        uses: burnett01/rsync-deployments@7.0.1
+        with:
+          switches: -avz --delete --exclude='node_modules/' --exclude='.git/' --exclude='.github/' --exclude='src/' --exclude='package.json' --exclude='package-lock.json' --exclude='vite.config.js' --exclude='tailwind.css'
+          path: ./
+          remote_path: /home/u369767313/public_html/wp-content/themes/skyeye/
+          remote_host: ${{ secrets.HOSTINGER_HOST }}
+          remote_user: ${{ secrets.HOSTINGER_USER }}
+          remote_port: ${{ secrets.HOSTINGER_PORT }}
+          remote_key: ${{ secrets.HOSTINGER_KEY }}
