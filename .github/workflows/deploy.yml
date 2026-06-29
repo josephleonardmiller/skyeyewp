@@ -43,4 +43,4 @@ jobs:
             --exclude='tailwind.css' \
             -e "ssh -p ${{ secrets.HOSTINGER_PORT }} -o StrictHostKeyChecking=no" \
             ./ \
-            ${{ secrets.HOSTINGER_USER }}@${{ secrets.HOSTINGER_HOST }}:/home/u369767313/public_html/wp-content/themes/skyeye/
+            ${{ secrets.HOSTINGER_USER }}@${{ secrets.HOSTINGER_HOST }}:/home/u369767313/domains/pink-lyrebird-404467.hostingersite.com/public_html/wp-content/themes/skyeye/
