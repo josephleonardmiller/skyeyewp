@@ -25,13 +25,25 @@ jobs:
       - name: Build assets
         run: npm run build
 
-      - name: Deploy via rsync
-        uses: burnett01/rsync-deployments@7.0.1
+      - name: Setup SSH agent
+        uses: webfactory/ssh-agent@v0.9.0
         with:
-          switches: -avz --delete --exclude='node_modules/' --exclude='.git/' --exclude='.github/' --exclude='src/' --exclude='package.json' --exclude='package-lock.json' --exclude='vite.config.js' --exclude='tailwind.css'
-          path: ./
-          remote_path: /home/u369767313/public_html/wp-content/themes/skyeye/
-          remote_host: ${{ secrets.HOSTINGER_HOST }}
-          remote_user: ${{ secrets.HOSTINGER_USER }}
-          remote_port: ${{ secrets.HOSTINGER_PORT }}
-          remote_key: ${{ secrets.HOSTINGER_KEY }}
+          ssh-private-key: ${{ secrets.HOSTINGER_KEY }}
+
+      - name: Add server to known_hosts
+        run: ssh-keyscan -p ${{ secrets.HOSTINGER_PORT }} ${{ secrets.HOSTINGER_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Deploy via rsync
+        run: |
+          rsync -avz --delete \
+            --exclude='node_modules/' \
+            --exclude='.git/' \
+            --exclude='.github/' \
+            --exclude='src/' \
+            --exclude='package.json' \
+            --exclude='package-lock.json' \
+            --exclude='vite.config.js' \
+            --exclude='tailwind.css' \
+            -e "ssh -p ${{ secrets.HOSTINGER_PORT }}" \
+            ./ \
+            ${{ secrets.HOSTINGER_USER }}@${{ secrets.HOSTINGER_HOST }}:/home/u369767313/public_html/wp-content/themes/skyeye/
