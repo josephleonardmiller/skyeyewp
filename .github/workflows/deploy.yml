@@ -30,9 +30,6 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.HOSTINGER_KEY }}
 
-      - name: Add server to known_hosts
-        run: ssh-keyscan -p ${{ secrets.HOSTINGER_PORT }} ${{ secrets.HOSTINGER_HOST }} >> ~/.ssh/known_hosts
-
       - name: Deploy via rsync
         run: |
           rsync -avz --delete \
@@ -44,6 +41,6 @@ jobs:
             --exclude='package-lock.json' \
             --exclude='vite.config.js' \
             --exclude='tailwind.css' \
-            -e "ssh -p ${{ secrets.HOSTINGER_PORT }}" \
+            -e "ssh -p ${{ secrets.HOSTINGER_PORT }} -o StrictHostKeyChecking=no" \
             ./ \
             ${{ secrets.HOSTINGER_USER }}@${{ secrets.HOSTINGER_HOST }}:/home/u369767313/public_html/wp-content/themes/skyeye/
