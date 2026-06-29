@@ -28,7 +28,7 @@ $contact_url = esc_url( get_permalink( get_page_by_path( 'contact' ) ) ?: home_u
 
 <!-- Header -->
 <header id="site-header" class="fixed inset-x-0 top-0 z-[150] bg-transparent" data-header>
-    <div class="container mx-auto px-6 lg:px-16">
+    <div class="container mx-auto px-6 lg:px-16 py-3 md:py-5">
         <div class="flex items-center justify-between">
 
             <!-- Logo -->

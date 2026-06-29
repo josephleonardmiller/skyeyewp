@@ -5,7 +5,7 @@ $description = get_sub_field( 'description' )          ?: '';
 $video_url   = get_sub_field( 'background_video_url' ) ?: '';
 ?>
 
-<section class="hero relative w-full h-screen overflow-hidden bg-black" data-hero>
+<section class="hero relative w-full h-[100svh] overflow-hidden bg-black" data-hero>
     <div class="loader-overlay-top absolute inset-0 bg-brand-100 z-50 origin-right" style="width:0%"></div>
     <div class="loader-overlay-bottom absolute inset-0 bg-brand-100 z-40 origin-right" style="width:0%"></div>
 
