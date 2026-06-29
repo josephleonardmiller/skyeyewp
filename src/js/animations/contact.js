@@ -8,7 +8,14 @@ export function initContact() {
 
   if (!frame || !content) return
 
-  // Parallax on background video
+  // Mobile: skip split-screen — show full-width gold form immediately
+  if (window.innerWidth < 768) {
+    gsap.set(frame,   { clipPath: 'polygon(0 0, 0% 0, 0% 100%, 0 100%)' })
+    gsap.set(content, { opacity: 1 })
+    return
+  }
+
+  // Parallax on background video (desktop only)
   const parallaxWrap = frame.querySelector('.contact-parallax-wrap')
   if (parallaxWrap) {
     gsap.to(parallaxWrap, {
