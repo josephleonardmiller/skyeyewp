@@ -41,22 +41,14 @@ export function initHeader() {
       gsap.to(menu, { x: '0%', duration: 0.5, ease: 'power3.out' })
       menu.setAttribute('aria-hidden', 'false')
       btn.setAttribute('aria-expanded', 'true')
-
-      // Animate hamburger to X
-      gsap.to(lines[0], { rotate: 45,  y: 6,  duration: 0.3 })
-      gsap.to(lines[1], { opacity: 0,        duration: 0.2 })
-      gsap.to(lines[2], { rotate: -45, y: -6, duration: 0.3, scaleX: 1.5 })
+      gsap.to(btn, { opacity: 0, duration: 0.2 })
     })
 
     function closeMenu() {
       gsap.to(menu, { x: '100%', duration: 0.5, ease: 'power3.in' })
       menu.setAttribute('aria-hidden', 'true')
       btn.setAttribute('aria-expanded', 'false')
-
-      // Reset hamburger
-      gsap.to(lines[0], { rotate: 0, y: 0, duration: 0.3 })
-      gsap.to(lines[1], { opacity: 1,      duration: 0.2 })
-      gsap.to(lines[2], { rotate: 0, y: 0, duration: 0.3, scaleX: 1 })
+      gsap.to(btn, { opacity: 1, duration: 0.3, delay: 0.3 })
     }
 
     if (closeBtn) closeBtn.addEventListener('click', closeMenu)

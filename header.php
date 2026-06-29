@@ -106,7 +106,7 @@ $contact_url = esc_url( get_permalink( get_page_by_path( 'contact' ) ) ?: home_u
         'container_attr' => [ 'aria-label' => 'Mobile' ],
         'menu_class'     => 'flex flex-col items-center gap-[1.875rem] text-center',
         'items_wrap'     => '<ul class="%2$s">%3$s</ul>',
-        'link_class'     => 'font-heading text-[3rem] leading-normal text-white hover:opacity-60 transition-opacity duration-300',
+        'link_class'     => 'font-heading text-[1.75rem] leading-[2] text-white hover:opacity-60 transition-opacity duration-300',
         'depth'          => 1,
         'fallback_cb'    => false,
     ] ); ?>
