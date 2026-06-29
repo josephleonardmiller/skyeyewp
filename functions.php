@@ -11,6 +11,7 @@ require_once SKYEYE_DIR . '/inc/post-types.php';
 require_once SKYEYE_DIR . '/inc/acf-blocks.php';
 require_once SKYEYE_DIR . '/inc/acf-fields.php';
 require_once SKYEYE_DIR . '/inc/ajax-form.php';
+require_once SKYEYE_DIR . '/inc/setup-tool.php'; // TODO: remove after Hostinger setup
 
 function skyeye_setup() {
     add_theme_support( 'title-tag' );
