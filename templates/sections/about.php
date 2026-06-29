@@ -5,6 +5,7 @@ $para2     = get_sub_field( 'paragraph_2' )   ?: '';
 $image     = get_sub_field( 'featured_image' );
 $cta_label = get_sub_field( 'cta_label' )     ?: 'Learn more';
 $cta_url   = get_sub_field( 'cta_url' )       ?: get_permalink( get_page_by_path( 'about' ) );
+$signature = get_sub_field( 'signature' );
 ?>
 
 <section class="about relative py-24 lg:py-32 overflow-hidden bg-brand-100" data-about>
@@ -28,7 +29,7 @@ $cta_url   = get_sub_field( 'cta_url' )       ?: get_permalink( get_page_by_path
             <?php endif; ?>
 
             <div class="about-content">
-                <div class="overflow-hidden mb-6">
+                <div class="mb-6">
                     <h2 class="about-heading font-heading text-4xl lg:text-6xl text-black opacity-0 -translate-x-24" data-about-heading>
                         <?php echo esc_html( $title ); ?>
                     </h2>
@@ -50,10 +51,23 @@ $cta_url   = get_sub_field( 'cta_url' )       ?: get_permalink( get_page_by_path
                 </div>
                 <?php endif; ?>
 
-                <div class="overflow-hidden">
-                    <a href="<?php echo esc_url( $cta_url ); ?>" class="about-cta btn-primary opacity-0 translate-y-8" data-about-cta data-transition-link>
-                        <?php echo esc_html( $cta_label ); ?>
-                    </a>
+                <div class="relative mt-12">
+                    <div class="overflow-hidden">
+                        <a href="<?php echo esc_url( $cta_url ); ?>" class="about-cta btn-primary opacity-0 translate-y-8" data-about-cta data-transition-link>
+                            <span class="btn-inner"><?php echo esc_html( $cta_label ); ?></span>
+                        </a>
+                    </div>
+                    <?php if ( $signature ) : ?>
+                    <img
+                        src="<?php echo esc_url( $signature['url'] ); ?>"
+                        alt="<?php echo esc_attr( $signature['alt'] ?: 'Signature' ); ?>"
+                        width="121"
+                        height="74"
+                        class="about-signature absolute opacity-0"
+                        style="bottom:2.5rem;right:4.375rem;"
+                        data-about-signature
+                    >
+                    <?php endif; ?>
                 </div>
             </div>
 

@@ -38,6 +38,23 @@ add_filter( 'nav_menu_link_attributes', function ( $atts, $item, $args, $depth )
 // Strip default <li> classes for clean markup
 add_filter( 'nav_menu_css_class', '__return_empty_array', 10, 4 );
 
+// Allow SVG uploads to the media library
+add_filter( 'upload_mimes', function( $mimes ) {
+    $mimes['svg']  = 'image/svg+xml';
+    $mimes['svgz'] = 'image/svg+xml';
+    return $mimes;
+} );
+add_filter( 'wp_check_filetype_and_ext', function( $data, $file, $filename, $mimes ) {
+    if ( ! $data['type'] ) {
+        $ext = strtolower( pathinfo( $filename, PATHINFO_EXTENSION ) );
+        if ( $ext === 'svg' || $ext === 'svgz' ) {
+            $data['type'] = 'image/svg+xml';
+            $data['ext']  = $ext;
+        }
+    }
+    return $data;
+}, 10, 4 );
+
 // ACF options page
 add_action( 'acf/init', function() {
     if ( function_exists( 'acf_add_options_page' ) ) {

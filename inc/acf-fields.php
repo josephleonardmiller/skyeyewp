@@ -119,6 +119,7 @@ function skyeye_register_acf_fields() {
                             [ 'key' => 'field_pb_about_image',     'label' => 'Featured Image','name' => 'featured_image','type' => 'image',    'return_format' => 'array', 'preview_size' => 'medium' ],
                             [ 'key' => 'field_pb_about_cta_label', 'label' => 'CTA Label',    'name' => 'cta_label',     'type' => 'text',     'default_value' => 'Learn more' ],
                             [ 'key' => 'field_pb_about_cta_url',   'label' => 'CTA URL',      'name' => 'cta_url',       'type' => 'url',      'default_value' => '/about' ],
+                            [ 'key' => 'field_pb_about_signature', 'label' => 'Signature SVG', 'name' => 'signature',    'type' => 'image',    'return_format' => 'array', 'preview_size' => 'thumbnail', 'instructions' => 'Upload an SVG signature image. Displayed beside the CTA button.' ],
                         ],
                     ],
 

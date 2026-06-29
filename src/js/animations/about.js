@@ -37,6 +37,10 @@ export function initAbout() {
 
       // CTA button
       tl.to('[data-about-cta]', { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' }, 1.6)
+
+      // Signature — fades in after button
+      const sig = section.querySelector('[data-about-signature]')
+      if (sig) tl.to(sig, { opacity: 1, duration: 1, ease: 'power2.out' }, 2.0)
     },
   })
 }
