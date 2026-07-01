@@ -91,7 +91,7 @@ $contact_url = esc_url( get_permalink( get_page_by_path( 'contact' ) ) ?: home_u
 <!-- Mobile menu — full-screen overlay matching Next.js design -->
 <div
     id="mobile-menu"
-    class="fixed inset-0 z-[149] flex flex-col items-center justify-center bg-black translate-x-full md:hidden"
+    class="fixed inset-0 z-[160] flex flex-col items-center justify-center bg-black translate-x-full md:hidden"
     aria-hidden="true"
 >
     <button id="mobile-menu-close" class="absolute top-[46px] right-[30px] text-white" aria-label="Close menu">
