@@ -95,7 +95,7 @@ $contact_url = esc_url( get_permalink( get_page_by_path( 'contact' ) ) ?: home_u
     aria-hidden="true"
 >
     <!-- Logo + close button row -->
-    <div class="absolute inset-x-0 top-0 flex items-center justify-between px-6 py-3">
+    <div class="absolute inset-x-0 top-0 flex items-center justify-between px-6 pt-8 pb-3">
         <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="inline-flex items-center hover:opacity-60 transition-opacity duration-300" data-transition-link>
             <div class="flex h-12 w-12 items-center justify-center rounded-full border border-white flex-shrink-0">
                 <img src="<?php echo $logo_url; ?>" alt="<?php echo $logo_alt; ?>" width="32" height="32" class="w-8 h-8 object-contain">
