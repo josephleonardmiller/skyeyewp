@@ -42,6 +42,7 @@ export function initHeader() {
       menu.setAttribute('aria-hidden', 'false')
       btn.setAttribute('aria-expanded', 'true')
       gsap.to(btn, { opacity: 0, duration: 0.2 })
+      document.body.style.overflow = 'hidden'
     })
 
     function closeMenu() {
@@ -49,6 +50,7 @@ export function initHeader() {
       menu.setAttribute('aria-hidden', 'true')
       btn.setAttribute('aria-expanded', 'false')
       gsap.to(btn, { opacity: 1, duration: 0.3, delay: 0.3 })
+      document.body.style.overflow = ''
     }
 
     if (closeBtn) closeBtn.addEventListener('click', closeMenu)
