@@ -52,22 +52,23 @@ $signature = get_sub_field( 'signature' );
                 <?php endif; ?>
 
                 <div class="relative mt-12">
-                    <div class="overflow-hidden">
-                        <a href="<?php echo esc_url( $cta_url ); ?>" class="about-cta btn-primary opacity-0 translate-y-8" data-about-cta data-transition-link>
-                            <span class="btn-inner"><?php echo esc_html( $cta_label ); ?></span>
-                        </a>
+                    <div class="flex items-center gap-6 flex-wrap">
+                        <div class="overflow-hidden">
+                            <a href="<?php echo esc_url( $cta_url ); ?>" class="about-cta btn-primary opacity-0 translate-y-8" data-about-cta data-transition-link>
+                                <span class="btn-inner"><?php echo esc_html( $cta_label ); ?></span>
+                            </a>
+                        </div>
+                        <?php if ( $signature ) : ?>
+                        <img
+                            src="<?php echo esc_url( $signature['url'] ); ?>"
+                            alt="<?php echo esc_attr( $signature['alt'] ?: 'Signature' ); ?>"
+                            width="121"
+                            height="74"
+                            class="about-signature opacity-0 lg:absolute lg:bottom-10 lg:right-[4.375rem]"
+                            data-about-signature
+                        >
+                        <?php endif; ?>
                     </div>
-                    <?php if ( $signature ) : ?>
-                    <img
-                        src="<?php echo esc_url( $signature['url'] ); ?>"
-                        alt="<?php echo esc_attr( $signature['alt'] ?: 'Signature' ); ?>"
-                        width="121"
-                        height="74"
-                        class="about-signature absolute opacity-0"
-                        style="bottom:2.5rem;right:4.375rem;"
-                        data-about-signature
-                    >
-                    <?php endif; ?>
                 </div>
             </div>
 
