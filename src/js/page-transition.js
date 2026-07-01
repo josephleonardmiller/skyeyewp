@@ -2,17 +2,8 @@ export function initPageTransitions() {
   const overlay = document.querySelector('.page-transition-overlay')
   if (!overlay) return
 
-  // Entry — wipe overlay out on page load
-  gsap.to(overlay, {
-    clipPath: 'inset(0 0% 0 0)',
-    duration: 0,
-  })
-  gsap.to(overlay, {
-    clipPath: 'inset(0 100% 0 0)',
-    duration: 0.8,
-    ease: 'power2.inOut',
-    delay: 0.1,
-  })
+  // Ensure overlay is hidden on page load (already set in HTML but reset after back-navigation)
+  gsap.set(overlay, { clipPath: 'inset(0 100% 0 0)' })
 
   // Exit — intercept internal links
   document.querySelectorAll('[data-transition-link]').forEach((link) => {
