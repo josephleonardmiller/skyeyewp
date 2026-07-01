@@ -94,7 +94,7 @@ $contact_url = esc_url( get_permalink( get_page_by_path( 'contact' ) ) ?: home_u
     class="fixed inset-0 z-[149] flex flex-col items-center justify-center bg-black translate-x-full md:hidden"
     aria-hidden="true"
 >
-    <button id="mobile-menu-close" class="absolute top-6 right-6 text-white" aria-label="Close menu">
+    <button id="mobile-menu-close" class="absolute top-[46px] right-[30px] text-white" aria-label="Close menu">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
             <path d="M18 6L6 18M6 6l12 12"/>
         </svg>
@@ -104,9 +104,9 @@ $contact_url = esc_url( get_permalink( get_page_by_path( 'contact' ) ) ?: home_u
         'theme_location' => 'primary',
         'container'      => 'nav',
         'container_attr' => [ 'aria-label' => 'Mobile' ],
-        'menu_class'     => 'flex flex-col items-center gap-[1.875rem] text-center',
+        'menu_class'     => 'flex flex-col items-center gap-[1.4375rem] text-center',
         'items_wrap'     => '<ul class="%2$s">%3$s</ul>',
-        'link_class'     => 'font-heading text-[1.75rem] leading-[2] text-white hover:opacity-60 transition-opacity duration-300',
+        'link_class'     => 'font-heading text-[1.75rem] leading-tight text-white hover:opacity-60 transition-opacity duration-300',
         'depth'          => 1,
         'fallback_cb'    => false,
     ] ); ?>
