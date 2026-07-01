@@ -94,21 +94,22 @@ $contact_url = esc_url( get_permalink( get_page_by_path( 'contact' ) ) ?: home_u
     class="fixed inset-0 z-[160] flex flex-col items-center justify-center bg-black translate-x-full md:hidden"
     aria-hidden="true"
 >
-    <!-- Logo -->
-    <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="absolute top-0 left-0 inline-flex items-center px-6 py-3 hover:opacity-60 transition-opacity duration-300" data-transition-link>
-        <div class="flex h-12 w-12 items-center justify-center rounded-full border border-white flex-shrink-0">
-            <img src="<?php echo $logo_url; ?>" alt="<?php echo $logo_alt; ?>" width="32" height="32" class="w-8 h-8 object-contain">
-        </div>
-        <span class="ml-[0.9375rem] text-[0.75rem] uppercase tracking-[2px] text-white leading-tight">
-            <?php echo esc_html( $company ); ?>
-        </span>
-    </a>
-
-    <button id="mobile-menu-close" class="absolute top-[46px] right-[30px] text-white" aria-label="Close menu">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-            <path d="M18 6L6 18M6 6l12 12"/>
-        </svg>
-    </button>
+    <!-- Logo + close button row -->
+    <div class="absolute inset-x-0 top-0 flex items-center justify-between px-6 py-3">
+        <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="inline-flex items-center hover:opacity-60 transition-opacity duration-300" data-transition-link>
+            <div class="flex h-12 w-12 items-center justify-center rounded-full border border-white flex-shrink-0">
+                <img src="<?php echo $logo_url; ?>" alt="<?php echo $logo_alt; ?>" width="32" height="32" class="w-8 h-8 object-contain">
+            </div>
+            <span class="ml-[0.9375rem] text-[0.75rem] uppercase tracking-[2px] text-white leading-tight">
+                <?php echo esc_html( $company ); ?>
+            </span>
+        </a>
+        <button id="mobile-menu-close" class="text-white" aria-label="Close menu">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <path d="M18 6L6 18M6 6l12 12"/>
+            </svg>
+        </button>
+    </div>
 
     <?php wp_nav_menu( [
         'theme_location' => 'primary',
