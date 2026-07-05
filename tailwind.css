@@ -662,3 +662,178 @@
   cursor: default !important;
   background: none !important;
 }
+
+/* ─── Blog / Archive pages — header always dark (page has light bg) ───── */
+body.blog #site-header,
+body.single #site-header,
+body.archive #site-header,
+body.category #site-header,
+body.tag #site-header,
+body.search #site-header {
+  background-color: #000 !important;
+}
+
+/* ─── Blog pagination ─────────────────────────────────────────────────── */
+.navigation.pagination {
+  display: flex;
+  justify-content: center;
+  padding: 3rem 0 1rem;
+}
+
+.navigation.pagination .nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.navigation.pagination .page-numbers {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  color: black;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.navigation.pagination .page-numbers:hover {
+  background-color: rgba(0, 0, 0, 0.07);
+}
+
+.navigation.pagination .page-numbers.current {
+  background-color: black;
+  color: white;
+}
+
+.navigation.pagination .page-numbers.prev,
+.navigation.pagination .page-numbers.next {
+  border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.navigation.pagination .page-numbers.dots {
+  pointer-events: none;
+}
+
+/* ─── Blog post content typography ────────────────────────────────────── */
+.post-content {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.75;
+  color: rgba(0, 0, 0, 0.65);
+}
+
+.post-content > p:first-of-type {
+  font-weight: 500;
+  color: black;
+  font-size: 1.125rem;
+  line-height: 1.7;
+}
+
+.post-content p {
+  margin-bottom: 1.625rem;
+  font-weight: 300;
+}
+
+.post-content h2 {
+  font-family: var(--font-heading);
+  font-size: 1.875rem;
+  color: black;
+  margin: 3rem 0 1.25rem;
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+.post-content h3 {
+  font-family: var(--font-body);
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: black;
+  margin: 2.5rem 0 0.875rem;
+  line-height: 1.4;
+}
+
+.post-content h4 {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 500;
+  color: black;
+  margin: 1.75rem 0 0.5rem;
+}
+
+.post-content a {
+  color: rgb(168 153 125);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s ease;
+}
+
+.post-content a:hover {
+  color: black;
+}
+
+.post-content img {
+  width: 100%;
+  height: auto;
+  border-radius: 0.75rem;
+  margin: 2.5rem 0;
+  display: block;
+}
+
+.post-content blockquote {
+  margin: 3rem 0;
+  padding: 0;
+  border: none;
+}
+
+.post-content blockquote::before {
+  content: '\201C';
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 4rem;
+  color: rgb(194 178 146);
+  line-height: 0.8;
+  margin-bottom: 0.75rem;
+}
+
+.post-content blockquote p {
+  font-family: var(--font-heading);
+  font-size: 1.625rem;
+  font-style: italic;
+  color: black;
+  font-weight: 400;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.post-content ul,
+.post-content ol {
+  padding-left: 1.5rem;
+  margin-bottom: 1.625rem;
+}
+
+.post-content ul { list-style-type: disc; }
+.post-content ol { list-style-type: decimal; }
+
+.post-content li {
+  margin-bottom: 0.5rem;
+  font-weight: 300;
+}
+
+.post-content figure { margin: 2.5rem 0; }
+
+.post-content figcaption {
+  font-size: 0.875rem;
+  color: rgba(0, 0, 0, 0.4);
+  text-align: center;
+  margin-top: 0.75rem;
+}
+
+.post-content hr {
+  border: none;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  margin: 3rem 0;
+}
