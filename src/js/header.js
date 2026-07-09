@@ -3,6 +3,7 @@ export function initHeader() {
   if (!header) return
 
   let lastY = 0
+  let hidden = false
 
   ScrollTrigger.create({
     start: 'top top',
@@ -12,29 +13,25 @@ export function initHeader() {
       const scrollingDown = currentY > lastY
 
       if (currentY <= 80) {
-        // At top — transparent, always visible
+        // Back at top — reset to transparent and show
         header.classList.remove('bg-black', 'is-scrolled')
         header.classList.add('bg-transparent')
-        gsap.to(header, { y: '0%', duration: 0.4, ease: 'power2.out' })
-      } else if (scrollingDown) {
-        // Strip black immediately so the header slides off transparent
+        if (hidden) {
+          hidden = false
+          gsap.to(header, { y: '0%', duration: 0.4, ease: 'power2.out', overwrite: true })
+        }
+      } else if (scrollingDown && !hidden) {
+        // Scrolling down — strip black first (instant), then slide off
+        hidden = true
         header.classList.remove('bg-black', 'is-scrolled')
         header.classList.add('bg-transparent')
-        gsap.to(header, {
-          y: '-100%',
-          duration: 0.4,
-          ease: 'power2.out',
-          onComplete() {
-            // Re-apply off-screen so it's ready to slide back in black
-            header.classList.add('bg-black', 'is-scrolled')
-            header.classList.remove('bg-transparent')
-          },
-        })
-      } else {
-        // Scrolling up — reveal with black background
+        gsap.to(header, { y: '-100%', duration: 0.4, ease: 'power2.out', overwrite: true })
+      } else if (!scrollingDown && hidden) {
+        // Scrolling up — header is off-screen so adding black is invisible, then slide in
+        hidden = false
         header.classList.add('bg-black', 'is-scrolled')
         header.classList.remove('bg-transparent')
-        gsap.to(header, { y: '0%', duration: 0.4, ease: 'power2.out' })
+        gsap.to(header, { y: '0%', duration: 0.4, ease: 'power2.out', overwrite: true })
       }
 
       lastY = currentY
