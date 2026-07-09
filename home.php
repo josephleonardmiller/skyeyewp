@@ -39,9 +39,9 @@ global $wp_query;
 $wp_query->max_num_pages = $grid_query->max_num_pages;
 ?>
 
-<!-- Blog hero header -->
-<section class="bg-brand-100 pt-40 pb-16 lg:pt-48 lg:pb-20 text-center px-6">
-    <div class="container mx-auto">
+<!-- Blog hero header + featured post — cream background -->
+<section class="bg-brand-100 pt-40 pb-16 lg:pt-48 lg:pb-20 px-6">
+    <div class="container mx-auto text-center">
         <h1 class="font-heading text-5xl lg:text-[3rem] text-black mb-4 leading-tight">
             Wedding video tips &amp; guides
         </h1>
@@ -49,47 +49,62 @@ $wp_query->max_num_pages = $grid_query->max_num_pages;
             Your go-to resource for wedding film inspiration, planning tips, and behind-the-scenes stories.
         </p>
     </div>
+
+    <?php if ( $featured ) : ?>
+
+    <!-- Featured post — inside cream section -->
+    <?php
+    global $post;
+    $post = $featured;
+    setup_postdata( $post );
+    $categories = get_the_category();
+    ?>
+    <article class="container mx-auto mt-14">
+        <a href="<?php the_permalink(); ?>" class="grid lg:grid-cols-[54fr_43fr] gap-8 lg:gap-16 items-center group">
+            <?php if ( has_post_thumbnail() ) : ?>
+            <div class="overflow-hidden rounded-xl flex-shrink-0" style="height:439px;">
+                <?php the_post_thumbnail( 'large', [
+                    'class' => 'w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]',
+                ] ); ?>
+            </div>
+            <?php endif; ?>
+            <div>
+                <?php if ( $categories ) : ?>
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <?php foreach ( $categories as $cat ) : ?>
+                    <span class="font-body text-xs uppercase tracking-widest border border-black/20 rounded-full px-3 py-1 text-black/70">
+                        <?php echo esc_html( $cat->name ); ?>
+                    </span>
+                    <?php endforeach; ?>
+                </div>
+                <?php endif; ?>
+                <h2 class="font-heading text-[1.75rem] lg:text-[2.25rem] text-black mb-4 leading-tight">
+                    <?php the_title(); ?>
+                </h2>
+                <p class="font-body text-base text-black/60 leading-relaxed mb-6">
+                    <?php echo esc_html( wp_trim_words( get_the_excerpt(), 28, '…' ) ); ?>
+                </p>
+                <p class="font-body text-xs text-brand-200 uppercase tracking-widest">
+                    <?php echo esc_html( get_the_date( 'F j, Y' ) ); ?>
+                </p>
+            </div>
+        </a>
+    </article>
+
+    <?php endif; ?>
 </section>
 
+<!-- Grid posts — white background -->
 <div class="bg-white pb-24">
     <div class="container mx-auto px-6 lg:px-16">
 
-        <?php if ( $featured ) : ?>
-
-        <!-- Featured post -->
-        <?php
-        global $post;
-        $post = $featured;
-        setup_postdata( $post );
-        ?>
-        <article class="py-16 border-b border-black/10">
-            <a href="<?php the_permalink(); ?>" class="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center group">
-                <?php if ( has_post_thumbnail() ) : ?>
-                <div class="overflow-hidden rounded-xl flex-shrink-0" style="height:439px;">
-                    <?php the_post_thumbnail( 'large', [
-                        'class' => 'w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]',
-                    ] ); ?>
-                </div>
-                <?php endif; ?>
-                <div>
-                    <p class="font-body text-xs text-brand-200 mb-3 uppercase tracking-widest">
-                        <?php echo esc_html( get_the_date( 'F j, Y' ) ); ?>
-                    </p>
-                    <h2 class="font-heading text-[1.75rem] lg:text-[2.25rem] text-black mb-4 leading-tight">
-                        <?php the_title(); ?>
-                    </h2>
-                    <p class="font-body text-base text-black/60 leading-relaxed">
-                        <?php echo esc_html( wp_trim_words( get_the_excerpt(), 28, '…' ) ); ?>
-                    </p>
-                </div>
-            </a>
-        </article>
-
+        <?php if ( $large_grid || $small_grid ) : ?>
+        <h2 class="font-heading text-[2.25rem] text-black pt-14 pb-10">All posts</h2>
         <?php endif; ?>
 
         <!-- Large 2-col grid (posts 2–3) -->
         <?php if ( $large_grid ) : ?>
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 pt-12 mb-12">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
             <?php foreach ( $large_grid as $grid_post ) :
                 global $post;
                 $post = $grid_post;
@@ -107,9 +122,12 @@ $wp_query->max_num_pages = $grid_query->max_num_pages;
                     <p class="font-body text-xs text-brand-200 mb-2 uppercase tracking-widest">
                         <?php echo esc_html( get_the_date( 'F j, Y' ) ); ?>
                     </p>
-                    <h3 class="font-heading text-[1.375rem] text-black leading-snug">
+                    <h3 class="font-heading text-[1.375rem] text-black leading-snug mb-3">
                         <?php the_title(); ?>
                     </h3>
+                    <p class="font-body text-sm font-light text-black/60 leading-relaxed">
+                        <?php echo esc_html( wp_trim_words( get_the_excerpt(), 18, '…' ) ); ?>
+                    </p>
                 </a>
             </article>
             <?php endforeach; ?>
@@ -136,9 +154,12 @@ $wp_query->max_num_pages = $grid_query->max_num_pages;
                     <p class="font-body text-xs text-brand-200 mb-2 uppercase tracking-widest">
                         <?php echo esc_html( get_the_date( 'F j, Y' ) ); ?>
                     </p>
-                    <h3 class="font-heading text-[1.375rem] text-black leading-snug">
+                    <h3 class="font-heading text-[1.375rem] text-black leading-snug mb-2">
                         <?php the_title(); ?>
                     </h3>
+                    <p class="font-body text-sm font-light text-black/60 leading-relaxed">
+                        <?php echo esc_html( wp_trim_words( get_the_excerpt(), 14, '…' ) ); ?>
+                    </p>
                 </a>
             </article>
             <?php endforeach; ?>

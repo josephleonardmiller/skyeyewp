@@ -663,14 +663,38 @@
   background: none !important;
 }
 
-/* ─── Blog / Archive pages — header always dark (page has light bg) ───── */
-body.blog #site-header,
-body.single #site-header,
-body.archive #site-header,
-body.category #site-header,
-body.tag #site-header,
-body.search #site-header {
-  background-color: #000 !important;
+/* ─── Blog / Archive pages — header dark text at top (transparent over cream bg) */
+/* When scrolled (.is-scrolled + bg-black added by JS), white text from HTML kicks in */
+body.blog #site-header:not(.is-scrolled) .nav-link,
+body.single #site-header:not(.is-scrolled) .nav-link,
+body.archive #site-header:not(.is-scrolled) .nav-link,
+body.category #site-header:not(.is-scrolled) .nav-link,
+body.tag #site-header:not(.is-scrolled) .nav-link {
+  color: #1d1d1c !important;
+}
+
+body.blog #site-header:not(.is-scrolled) a > span,
+body.single #site-header:not(.is-scrolled) a > span,
+body.archive #site-header:not(.is-scrolled) a > span,
+body.category #site-header:not(.is-scrolled) a > span,
+body.tag #site-header:not(.is-scrolled) a > span {
+  color: #1d1d1c !important;
+}
+
+body.blog #site-header:not(.is-scrolled) a > div,
+body.single #site-header:not(.is-scrolled) a > div,
+body.archive #site-header:not(.is-scrolled) a > div,
+body.category #site-header:not(.is-scrolled) a > div,
+body.tag #site-header:not(.is-scrolled) a > div {
+  border-color: #1d1d1c !important;
+}
+
+body.blog #site-header:not(.is-scrolled) .hamburger-line,
+body.single #site-header:not(.is-scrolled) .hamburger-line,
+body.archive #site-header:not(.is-scrolled) .hamburger-line,
+body.category #site-header:not(.is-scrolled) .hamburger-line,
+body.tag #site-header:not(.is-scrolled) .hamburger-line {
+  background-color: #1d1d1c !important;
 }
 
 /* ─── Blog pagination ─────────────────────────────────────────────────── */
