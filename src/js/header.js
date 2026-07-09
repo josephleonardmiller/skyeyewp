@@ -17,12 +17,15 @@ export function initHeader() {
         header.classList.add('bg-transparent')
         gsap.to(header, { y: '0%', duration: 0.4, ease: 'power2.out' })
       } else if (scrollingDown) {
-        // Scrolling down — hide, then apply black once fully off-screen
+        // Strip black immediately so the header slides off transparent
+        header.classList.remove('bg-black', 'is-scrolled')
+        header.classList.add('bg-transparent')
         gsap.to(header, {
           y: '-100%',
           duration: 0.4,
           ease: 'power2.out',
           onComplete() {
+            // Re-apply off-screen so it's ready to slide back in black
             header.classList.add('bg-black', 'is-scrolled')
             header.classList.remove('bg-transparent')
           },
