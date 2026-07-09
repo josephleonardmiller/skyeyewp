@@ -9,20 +9,22 @@ export function initHeader() {
     end: 99999,
     onUpdate(self) {
       const currentY = self.scroll()
+      const scrollingDown = currentY > lastY
 
-      if (currentY > 80) {
-        header.classList.add('bg-black', 'is-scrolled')
-        header.classList.remove('bg-transparent')
-      } else {
+      if (currentY <= 80) {
+        // At top — transparent, always visible
         header.classList.remove('bg-black', 'is-scrolled')
         header.classList.add('bg-transparent')
-      }
-
-      if (currentY > lastY && currentY > 200) {
-        // Scrolling down — hide
+        gsap.to(header, { y: '0%', duration: 0.4, ease: 'power2.out' })
+      } else if (scrollingDown) {
+        // Scrolling down — hide immediately (pre-apply black for when it returns)
+        header.classList.add('bg-black', 'is-scrolled')
+        header.classList.remove('bg-transparent')
         gsap.to(header, { y: '-100%', duration: 0.4, ease: 'power2.out' })
       } else {
-        // Scrolling up — show
+        // Scrolling up — reveal with black background
+        header.classList.add('bg-black', 'is-scrolled')
+        header.classList.remove('bg-transparent')
         gsap.to(header, { y: '0%', duration: 0.4, ease: 'power2.out' })
       }
 
