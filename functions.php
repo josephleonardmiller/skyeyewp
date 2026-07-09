@@ -7,6 +7,7 @@ define( 'SKYEYE_DIR', get_template_directory() );
 define( 'SKYEYE_URI', get_template_directory_uri() );
 
 require_once SKYEYE_DIR . '/inc/enqueue.php';
+require_once SKYEYE_DIR . '/inc/featured-post.php';
 require_once SKYEYE_DIR . '/inc/post-types.php';
 require_once SKYEYE_DIR . '/inc/acf-blocks.php';
 require_once SKYEYE_DIR . '/inc/acf-fields.php';

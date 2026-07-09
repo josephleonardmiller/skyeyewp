@@ -4,18 +4,26 @@
  */
 get_header();
 
-// Collect all posts from the main query so we can split them into sections
-$all_posts = [];
+// Check for an admin-pinned featured post (pre_get_posts already excluded it from main query)
+$pinned_id   = (int) get_option( '_skyeye_featured_post' );
+$featured    = ( $pinned_id && get_post_status( $pinned_id ) === 'publish' ) ? get_post( $pinned_id ) : null;
+
+// Collect remaining posts from the main query
+$grid_posts = [];
 if ( have_posts() ) {
     while ( have_posts() ) {
         the_post();
-        $all_posts[] = $post; // each iteration sets a different WP_Post object
+        $grid_posts[] = $post;
     }
 }
 
-$featured   = $all_posts[0]                  ?? null;
-$large_grid = array_slice( $all_posts, 1, 2 );
-$small_grid = array_slice( $all_posts, 3 );
+// If no pinned post, promote the first grid post to featured
+if ( ! $featured && $grid_posts ) {
+    $featured = array_shift( $grid_posts );
+}
+
+$large_grid = array_slice( $grid_posts, 0, 2 );
+$small_grid = array_slice( $grid_posts, 2 );
 ?>
 
 <!-- Blog hero header -->
