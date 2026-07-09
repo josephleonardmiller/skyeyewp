@@ -49,7 +49,7 @@
 #site-header {
   padding-top: 1.25rem;
   padding-bottom: 1.25rem;
-  transition: padding 0.3s, background-color 0.3s, transform 0.4s;
+  transition: padding 0.3s, transform 0.4s;
 }
 @media (min-width: 768px) {
   #site-header {
