@@ -17,10 +17,16 @@ export function initHeader() {
         header.classList.add('bg-transparent')
         gsap.to(header, { y: '0%', duration: 0.4, ease: 'power2.out' })
       } else if (scrollingDown) {
-        // Scrolling down — hide immediately (pre-apply black for when it returns)
-        header.classList.add('bg-black', 'is-scrolled')
-        header.classList.remove('bg-transparent')
-        gsap.to(header, { y: '-100%', duration: 0.4, ease: 'power2.out' })
+        // Scrolling down — hide, then apply black once fully off-screen
+        gsap.to(header, {
+          y: '-100%',
+          duration: 0.4,
+          ease: 'power2.out',
+          onComplete() {
+            header.classList.add('bg-black', 'is-scrolled')
+            header.classList.remove('bg-transparent')
+          },
+        })
       } else {
         // Scrolling up — reveal with black background
         header.classList.add('bg-black', 'is-scrolled')
