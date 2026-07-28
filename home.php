@@ -50,7 +50,7 @@ $wp_query->max_num_pages = $grid_query->max_num_pages;
         <h1 class="font-heading text-5xl lg:text-[4rem] text-[#f8f5ef] mb-6 leading-tight">
             Wedding video tips &amp; guides
         </h1>
-        <p class="font-body text-lg lg:text-[1.25rem] font-light text-white/60 leading-relaxed">
+        <p class="font-body text-lg lg:text-[1.25rem] font-light text-[#f8f5ef] leading-relaxed">
             Your go-to resource for wedding film inspiration, planning tips, and behind-the-scenes stories.
         </p>
     </div>

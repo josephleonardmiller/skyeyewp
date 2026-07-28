@@ -29,7 +29,7 @@ $related_query = new WP_Query( $related_args );
         <h1 class="font-heading text-4xl md:text-5xl lg:text-[3.5rem] text-[#f8f5ef] mb-6 leading-tight">
             <?php the_title(); ?>
         </h1>
-        <p class="font-body text-[1.125rem] font-light text-white/60 leading-relaxed">
+        <p class="font-body text-[1.125rem] font-light text-[#f8f5ef] leading-relaxed mb-14 lg:mb-20">
             Your go-to resource for wedding film inspiration, planning tips, and behind-the-scenes stories.
         </p>
     </div>
