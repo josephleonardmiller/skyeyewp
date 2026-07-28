@@ -46,7 +46,7 @@ $related_query = new WP_Query( $related_args );
 
     <!-- Featured image — pulls up into dark hero via negative margin -->
     <?php if ( has_post_thumbnail() ) : ?>
-    <div class="px-6 lg:px-[8%] -mt-[220px] lg:-mt-[280px] mb-16 lg:mb-20">
+    <div class="relative px-6 lg:px-[8%] -mt-[220px] lg:-mt-[280px] mb-16 lg:mb-20">
         <div class="overflow-hidden rounded-xl h-[280px] md:h-[440px] lg:h-[560px] max-w-[1040px] mx-auto">
             <?php the_post_thumbnail( 'full', ['class' => 'w-full h-full object-cover'] ); ?>
         </div>
