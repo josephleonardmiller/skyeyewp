@@ -64,7 +64,7 @@ $related_query = new WP_Query( $related_args );
 
 <!-- Related blogs -->
 <?php if ( $related_query->have_posts() ) : ?>
-<section class="bg-white py-20">
+<section class="bg-brand-100 py-20">
     <div class="container mx-auto px-6 lg:px-16">
         <div class="flex items-center justify-between mb-12">
             <h2 class="font-heading text-[2.25rem] text-black tracking-[0.3px]">Related blogs</h2>
