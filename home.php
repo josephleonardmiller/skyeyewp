@@ -11,11 +11,9 @@ $featured  = ( $pinned_id && get_post_status( $pinned_id ) === 'publish' )
     : null;
 
 // ── Grid posts ────────────────────────────────────────────────────────────────
-$paged           = max( 1, (int) get_query_var( 'paged' ) );
-$exclude         = $featured ? [ $featured->ID ] : [];
-$category_filter = isset( $_GET['category_name'] ) ? sanitize_text_field( $_GET['category_name'] ) : '';
-$tag_filter      = isset( $_GET['tag'] )           ? sanitize_text_field( $_GET['tag'] )           : '';
-$sort_filter     = isset( $_GET['sort'] )          ? sanitize_text_field( $_GET['sort'] )          : '';
+$paged       = max( 1, (int) get_query_var( 'paged' ) );
+$exclude     = $featured ? [ $featured->ID ] : [];
+$sort_filter = isset( $_GET['sort'] ) ? sanitize_text_field( $_GET['sort'] ) : '';
 
 $allowed_sorts = [ 'oldest' => [ 'orderby' => 'date', 'order' => 'ASC' ], 'popular' => [ 'orderby' => 'comment_count', 'order' => 'DESC' ] ];
 $sort_args     = isset( $allowed_sorts[ $sort_filter ] ) ? $allowed_sorts[ $sort_filter ] : [ 'orderby' => 'date', 'order' => 'DESC' ];
@@ -31,12 +29,6 @@ $query_args = [
     'orderby'             => $sort_args['orderby'],
     'order'               => $sort_args['order'],
 ];
-if ( $category_filter ) {
-    $query_args['category_name'] = $category_filter;
-}
-if ( $tag_filter ) {
-    $query_args['tag'] = $tag_filter;
-}
 
 $grid_query = new WP_Query( $query_args );
 $grid_posts = $grid_query->posts;
@@ -112,55 +104,16 @@ $wp_query->max_num_pages = $grid_query->max_num_pages;
         <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between pt-14 pb-10 gap-4">
             <h2 class="font-heading text-[2.25rem] text-black tracking-[0.3px]">Latest blogs</h2>
 
-            <?php
-            $categories = get_categories( [ 'hide_empty' => true ] );
-            $tags       = get_tags( [ 'hide_empty' => true ] );
-            ?>
-            <form method="get" class="flex flex-wrap items-center gap-4 lg:gap-6">
-                <!-- Type filter -->
-                <div class="flex items-center gap-3">
-                    <span class="font-body text-[1.125rem] text-black">Type</span>
-                    <div class="relative">
-                        <select name="category_name" onchange="this.form.submit()"
-                            class="font-body text-[1.125rem] text-black border border-[#c2b293]/60 px-4 py-2.5 bg-transparent appearance-none pr-10 focus:outline-none cursor-pointer">
-                            <option value="">All</option>
-                            <?php if ( $categories ) : foreach ( $categories as $cat ) : ?>
-                            <option value="<?php echo esc_attr( $cat->slug ); ?>" <?php selected( $category_filter, $cat->slug ); ?>>
-                                <?php echo esc_html( $cat->name ); ?>
-                            </option>
-                            <?php endforeach; endif; ?>
-                        </select>
-                        <span class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-black/50 text-xs">▾</span>
-                    </div>
-                </div>
-                <!-- Topic filter -->
-                <div class="flex items-center gap-3">
-                    <span class="font-body text-[1.125rem] text-black">Topic</span>
-                    <div class="relative">
-                        <select name="tag" onchange="this.form.submit()"
-                            class="font-body text-[1.125rem] text-black border border-[#c2b293]/60 px-4 py-2.5 bg-transparent appearance-none pr-10 focus:outline-none cursor-pointer">
-                            <option value="">All</option>
-                            <?php if ( $tags ) : foreach ( $tags as $tag ) : ?>
-                            <option value="<?php echo esc_attr( $tag->slug ); ?>" <?php selected( $tag_filter, $tag->slug ); ?>>
-                                <?php echo esc_html( $tag->name ); ?>
-                            </option>
-                            <?php endforeach; endif; ?>
-                        </select>
-                        <span class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-black/50 text-xs">▾</span>
-                    </div>
-                </div>
-                <!-- Sort filter -->
-                <div class="flex items-center gap-3">
-                    <span class="font-body text-[1.125rem] text-black">Sort by</span>
-                    <div class="relative">
-                        <select name="sort" onchange="this.form.submit()"
-                            class="font-body text-[1.125rem] text-black border border-[#c2b293]/60 px-4 py-2.5 bg-transparent appearance-none pr-10 focus:outline-none cursor-pointer">
-                            <option value="" <?php selected( $sort_filter, '' ); ?>>Latest</option>
-                            <option value="oldest" <?php selected( $sort_filter, 'oldest' ); ?>>Oldest</option>
-                            <option value="popular" <?php selected( $sort_filter, 'popular' ); ?>>Popular</option>
-                        </select>
-                        <span class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-black/50 text-xs">▾</span>
-                    </div>
+            <form method="get" class="flex items-center gap-3">
+                <span class="font-body text-[1.125rem] text-black">Sort by</span>
+                <div class="relative">
+                    <select name="sort" onchange="this.form.submit()"
+                        class="font-body text-[1.125rem] text-black border border-[#c2b293]/60 px-4 py-2.5 bg-transparent appearance-none pr-10 focus:outline-none cursor-pointer">
+                        <option value="" <?php selected( $sort_filter, '' ); ?>>Latest</option>
+                        <option value="oldest" <?php selected( $sort_filter, 'oldest' ); ?>>Oldest</option>
+                        <option value="popular" <?php selected( $sort_filter, 'popular' ); ?>>Popular</option>
+                    </select>
+                    <span class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-black/50 text-xs">▾</span>
                 </div>
             </form>
         </div>
