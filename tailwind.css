@@ -663,9 +663,9 @@
   background: none !important;
 }
 
-/* ─── Blog / Archive pages — header dark text at top (transparent over cream bg) */
+/* ─── Single / Archive pages — header dark text at top (transparent over cream bg) */
+/* Blog listing excluded: its hero is now dark so default white nav text is correct */
 /* When scrolled (.is-scrolled + bg-black added by JS), white text from HTML kicks in */
-body.blog #site-header:not(.is-scrolled) .nav-link,
 body.single #site-header:not(.is-scrolled) .nav-link,
 body.archive #site-header:not(.is-scrolled) .nav-link,
 body.category #site-header:not(.is-scrolled) .nav-link,
@@ -673,7 +673,6 @@ body.tag #site-header:not(.is-scrolled) .nav-link {
   color: #1d1d1c !important;
 }
 
-body.blog #site-header:not(.is-scrolled) a > span,
 body.single #site-header:not(.is-scrolled) a > span,
 body.archive #site-header:not(.is-scrolled) a > span,
 body.category #site-header:not(.is-scrolled) a > span,
@@ -681,7 +680,6 @@ body.tag #site-header:not(.is-scrolled) a > span {
   color: #1d1d1c !important;
 }
 
-body.blog #site-header:not(.is-scrolled) a > div,
 body.single #site-header:not(.is-scrolled) a > div,
 body.archive #site-header:not(.is-scrolled) a > div,
 body.category #site-header:not(.is-scrolled) a > div,
@@ -689,7 +687,6 @@ body.tag #site-header:not(.is-scrolled) a > div {
   border-color: #1d1d1c !important;
 }
 
-body.blog #site-header:not(.is-scrolled) .hamburger-line,
 body.single #site-header:not(.is-scrolled) .hamburger-line,
 body.archive #site-header:not(.is-scrolled) .hamburger-line,
 body.category #site-header:not(.is-scrolled) .hamburger-line,

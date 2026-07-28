@@ -10,11 +10,12 @@ $featured  = ( $pinned_id && get_post_status( $pinned_id ) === 'publish' )
     ? get_post( $pinned_id )
     : null;
 
-// ── Grid posts (dedicated query so each post object is independent) ───────────
-$paged      = max( 1, (int) get_query_var( 'paged' ) );
-$exclude    = $featured ? [ $featured->ID ] : [];
+// ── Grid posts ────────────────────────────────────────────────────────────────
+$paged           = max( 1, (int) get_query_var( 'paged' ) );
+$exclude         = $featured ? [ $featured->ID ] : [];
+$category_filter = isset( $_GET['category_name'] ) ? sanitize_text_field( $_GET['category_name'] ) : '';
 
-$grid_query = new WP_Query( [
+$query_args = [
     'post_type'           => 'post',
     'post_status'         => 'publish',
     'posts_per_page'      => 6,
@@ -22,11 +23,14 @@ $grid_query = new WP_Query( [
     'post__not_in'        => $exclude,
     'ignore_sticky_posts' => 1,
     'no_found_rows'       => false,
-] );
+];
+if ( $category_filter ) {
+    $query_args['category_name'] = $category_filter;
+}
 
-$grid_posts = $grid_query->posts; // array of independent WP_Post objects
+$grid_query = new WP_Query( $query_args );
+$grid_posts = $grid_query->posts;
 
-// If nothing is pinned, promote the first grid post to featured
 if ( ! $featured && $grid_posts ) {
     $featured = array_shift( $grid_posts );
 }
@@ -34,64 +38,60 @@ if ( ! $featured && $grid_posts ) {
 $large_grid = array_slice( $grid_posts, 0, 2 );
 $small_grid = array_slice( $grid_posts, 2 );
 
-// Let the_posts_pagination() use our query's page count
 global $wp_query;
 $wp_query->max_num_pages = $grid_query->max_num_pages;
 ?>
 
-<!-- Blog hero header + featured post — cream background -->
-<section class="bg-brand-100 pt-40 pb-16 lg:pt-48 lg:pb-20 px-6">
-    <div class="container mx-auto text-center">
-        <h1 class="font-heading text-5xl lg:text-[3rem] text-black mb-4 leading-tight">
+<!-- Blog hero — dark background, cream text -->
+<section class="relative bg-black min-h-[500px] flex flex-col items-center justify-center text-center px-6">
+    <div class="container mx-auto">
+        <h1 class="font-heading text-5xl lg:text-[4rem] text-[#f8f5ef] mb-6 leading-tight">
             Wedding video tips &amp; guides
         </h1>
-        <p class="font-body text-[1.0625rem] font-light text-black/60 max-w-lg mx-auto leading-relaxed">
+        <p class="font-body text-lg lg:text-[1.25rem] font-light text-white/60 max-w-lg mx-auto leading-relaxed">
             Your go-to resource for wedding film inspiration, planning tips, and behind-the-scenes stories.
         </p>
     </div>
+</section>
 
-    <?php if ( $featured ) : ?>
+<!-- Featured post — cream background -->
+<section class="bg-brand-100">
+    <div class="container mx-auto px-6 lg:px-16 py-16 lg:py-20">
 
-    <!-- Featured post — inside cream section -->
-    <?php
-    global $post;
-    $post = $featured;
-    setup_postdata( $post );
-    $categories = get_the_category();
-    ?>
-    <article class="container mx-auto mt-14">
-        <a href="<?php the_permalink(); ?>" class="grid lg:grid-cols-[54fr_43fr] gap-8 lg:gap-16 items-center group">
-            <?php if ( has_post_thumbnail() ) : ?>
-            <div class="overflow-hidden rounded-xl flex-shrink-0" style="height:439px;">
-                <?php the_post_thumbnail( 'large', [
-                    'class' => 'w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]',
-                ] ); ?>
-            </div>
-            <?php endif; ?>
-            <div>
-                <?php if ( $categories ) : ?>
-                <div class="flex flex-wrap gap-2 mb-4">
-                    <?php foreach ( $categories as $cat ) : ?>
-                    <span class="font-body text-xs uppercase tracking-widest border border-black/20 rounded-full px-3 py-1 text-black/70">
-                        <?php echo esc_html( $cat->name ); ?>
-                    </span>
-                    <?php endforeach; ?>
+        <?php if ( $featured ) : ?>
+        <?php
+        global $post;
+        $post = $featured;
+        setup_postdata( $post );
+        ?>
+        <article>
+            <a href="<?php the_permalink(); ?>" class="grid lg:grid-cols-[63fr_37fr] gap-10 lg:gap-20 items-center group">
+                <?php if ( has_post_thumbnail() ) : ?>
+                <div class="overflow-hidden rounded-xl h-[300px] lg:h-[480px]">
+                    <?php the_post_thumbnail( 'large', [
+                        'class' => 'w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]',
+                    ] ); ?>
                 </div>
                 <?php endif; ?>
-                <h2 class="font-heading text-[1.75rem] lg:text-[2.25rem] text-black mb-4 leading-tight">
-                    <?php the_title(); ?>
-                </h2>
-                <p class="font-body text-base text-black/60 leading-relaxed mb-6">
-                    <?php echo esc_html( wp_trim_words( get_the_excerpt(), 28, '…' ) ); ?>
-                </p>
-                <p class="font-body text-xs text-brand-200 uppercase tracking-widest">
-                    <?php echo esc_html( get_the_date( 'F j, Y' ) ); ?>
-                </p>
-            </div>
-        </a>
-    </article>
+                <div>
+                    <h2 class="font-heading text-[1.75rem] lg:text-[2rem] text-black mb-4 leading-tight">
+                        <?php the_title(); ?>
+                    </h2>
+                    <p class="font-body text-[1.125rem] font-light text-black/60 leading-relaxed mb-6">
+                        <?php echo esc_html( wp_trim_words( get_the_excerpt(), 30, '…' ) ); ?>
+                    </p>
+                    <p class="font-body text-[1.125rem] text-brand-200 mb-8">
+                        <?php echo esc_html( get_the_date( 'F j, Y' ) ); ?>
+                    </p>
+                    <span class="font-body text-sm uppercase tracking-widest text-black border-b border-black/30 pb-0.5 transition-colors duration-300 group-hover:border-black">
+                        Read article
+                    </span>
+                </div>
+            </a>
+        </article>
+        <?php endif; ?>
 
-    <?php endif; ?>
+    </div>
 </section>
 
 <!-- Grid posts — white background -->
@@ -99,12 +99,38 @@ $wp_query->max_num_pages = $grid_query->max_num_pages;
     <div class="container mx-auto px-6 lg:px-16">
 
         <?php if ( $large_grid || $small_grid ) : ?>
-        <h2 class="font-heading text-[2.25rem] text-black pt-14 pb-10">All posts</h2>
+        <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between pt-14 pb-10 gap-4">
+            <h2 class="font-heading text-[2.25rem] text-black tracking-[0.3px]">Latest blogs</h2>
+
+            <?php
+            $categories = get_categories( [ 'hide_empty' => true ] );
+            if ( $categories ) :
+            ?>
+            <form method="get" class="flex items-center gap-3">
+                <span class="font-body text-[1.125rem] text-black">Type</span>
+                <div class="relative">
+                    <select
+                        name="category_name"
+                        onchange="this.form.submit()"
+                        class="font-body text-[1.125rem] text-black border border-[#c2b293]/60 px-4 py-2.5 bg-transparent appearance-none pr-10 focus:outline-none cursor-pointer"
+                    >
+                        <option value="">All</option>
+                        <?php foreach ( $categories as $cat ) : ?>
+                        <option value="<?php echo esc_attr( $cat->slug ); ?>" <?php selected( $category_filter, $cat->slug ); ?>>
+                            <?php echo esc_html( $cat->name ); ?>
+                        </option>
+                        <?php endforeach; ?>
+                    </select>
+                    <span class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-black/50 text-xs">▾</span>
+                </div>
+            </form>
+            <?php endif; ?>
+        </div>
         <?php endif; ?>
 
-        <!-- Large 2-col grid (posts 2–3) -->
+        <!-- Large 2-col grid (posts 1–2) -->
         <?php if ( $large_grid ) : ?>
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 mb-16">
             <?php foreach ( $large_grid as $grid_post ) :
                 global $post;
                 $post = $grid_post;
@@ -113,20 +139,20 @@ $wp_query->max_num_pages = $grid_query->max_num_pages;
             <article>
                 <a href="<?php the_permalink(); ?>" class="group block">
                     <?php if ( has_post_thumbnail() ) : ?>
-                    <div class="overflow-hidden rounded-xl mb-5" style="height:420px;">
+                    <div class="overflow-hidden rounded-xl mb-6 h-[260px] lg:h-[440px]">
                         <?php the_post_thumbnail( 'large', [
                             'class' => 'w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]',
                         ] ); ?>
                     </div>
                     <?php endif; ?>
-                    <p class="font-body text-xs text-brand-200 mb-2 uppercase tracking-widest">
-                        <?php echo esc_html( get_the_date( 'F j, Y' ) ); ?>
-                    </p>
-                    <h3 class="font-heading text-[1.375rem] text-black leading-snug mb-3">
+                    <h3 class="font-heading text-[1.5rem] text-black leading-snug mb-2">
                         <?php the_title(); ?>
                     </h3>
-                    <p class="font-body text-sm font-light text-black/60 leading-relaxed">
+                    <p class="font-body text-[1.125rem] font-light text-black/60 leading-relaxed mb-2">
                         <?php echo esc_html( wp_trim_words( get_the_excerpt(), 18, '…' ) ); ?>
+                    </p>
+                    <p class="font-body text-[1.125rem] text-brand-200">
+                        <?php echo esc_html( get_the_date( 'F j, Y' ) ); ?>
                     </p>
                 </a>
             </article>
@@ -134,9 +160,9 @@ $wp_query->max_num_pages = $grid_query->max_num_pages;
         </div>
         <?php endif; ?>
 
-        <!-- Small 3-col grid (posts 4+) -->
+        <!-- Small 3-col grid (posts 3+) -->
         <?php if ( $small_grid ) : ?>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-16 mb-12">
             <?php foreach ( $small_grid as $grid_post ) :
                 global $post;
                 $post = $grid_post;
@@ -145,20 +171,20 @@ $wp_query->max_num_pages = $grid_query->max_num_pages;
             <article>
                 <a href="<?php the_permalink(); ?>" class="group block">
                     <?php if ( has_post_thumbnail() ) : ?>
-                    <div class="overflow-hidden rounded-xl mb-4" style="height:267px;">
+                    <div class="overflow-hidden rounded-xl mb-6 h-[220px] lg:h-[296px]">
                         <?php the_post_thumbnail( 'medium_large', [
                             'class' => 'w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]',
                         ] ); ?>
                     </div>
                     <?php endif; ?>
-                    <p class="font-body text-xs text-brand-200 mb-2 uppercase tracking-widest">
-                        <?php echo esc_html( get_the_date( 'F j, Y' ) ); ?>
-                    </p>
-                    <h3 class="font-heading text-[1.375rem] text-black leading-snug mb-2">
+                    <h3 class="font-heading text-[1.5rem] text-black leading-snug mb-2">
                         <?php the_title(); ?>
                     </h3>
-                    <p class="font-body text-sm font-light text-black/60 leading-relaxed">
+                    <p class="font-body text-[1.125rem] font-light text-black/60 leading-relaxed mb-2">
                         <?php echo esc_html( wp_trim_words( get_the_excerpt(), 14, '…' ) ); ?>
+                    </p>
+                    <p class="font-body text-[1.125rem] text-brand-200">
+                        <?php echo esc_html( get_the_date( 'F j, Y' ) ); ?>
                     </p>
                 </a>
             </article>
