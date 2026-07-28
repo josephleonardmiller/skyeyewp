@@ -29,14 +29,9 @@ $related_query = new WP_Query( $related_args );
         <h1 class="font-heading text-4xl md:text-5xl lg:text-[3.5rem] text-[#f8f5ef] mb-6 leading-tight">
             <?php the_title(); ?>
         </h1>
-        <?php
-        $excerpt = get_the_excerpt();
-        if ( $excerpt ) :
-        ?>
-        <p class="font-body text-[1.125rem] font-light text-white/60 max-w-xl mx-auto leading-relaxed">
-            <?php echo esc_html( wp_trim_words( $excerpt, 30, '…' ) ); ?>
+        <p class="font-body text-[1.125rem] font-light text-white/60 leading-relaxed">
+            Your go-to resource for wedding film inspiration, planning tips, and behind-the-scenes stories.
         </p>
-        <?php endif; ?>
     </div>
 </section>
 
