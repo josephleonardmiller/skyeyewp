@@ -26,18 +26,17 @@ $related_query = new WP_Query( $related_args );
 <!-- Dark hero — post title + date -->
 <section class="relative bg-black pt-40 pb-[220px] lg:pt-48 lg:pb-[280px] text-center px-6">
     <div class="container mx-auto" style="max-width:900px;">
-        <?php if ( $primary_cat ) : ?>
-        <a href="<?php echo esc_url( get_category_link( $primary_cat->term_id ) ); ?>"
-           class="inline-block font-body text-xs text-white/50 uppercase tracking-widest mb-6 hover:text-white/80 transition-colors duration-200">
-            <?php echo esc_html( $primary_cat->name ); ?>
-        </a>
-        <?php endif; ?>
         <h1 class="font-heading text-4xl md:text-5xl lg:text-[3.5rem] text-[#f8f5ef] mb-6 leading-tight">
             <?php the_title(); ?>
         </h1>
-        <p class="font-body text-[1.125rem] text-brand-200">
-            <?php echo esc_html( get_the_date( 'F j, Y' ) ); ?>
+        <?php
+        $excerpt = get_the_excerpt();
+        if ( $excerpt ) :
+        ?>
+        <p class="font-body text-[1.125rem] font-light text-white/60 max-w-xl mx-auto leading-relaxed">
+            <?php echo esc_html( wp_trim_words( $excerpt, 30, '…' ) ); ?>
         </p>
+        <?php endif; ?>
     </div>
 </section>
 
