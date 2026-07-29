@@ -739,13 +739,13 @@ body.tag #site-header:not(.is-scrolled) .hamburger-line {
 .post-content {
   font-family: var(--font-body);
   font-size: 1.125rem;
-  line-height: 1.75;
-  color: rgba(0, 0, 0, 0.75);
+  line-height: 1.556;
+  color: #000000;
 }
 
 .post-content > p:first-of-type {
-  font-weight: 500;
-  color: black;
+  font-weight: 600;
+  color: #0d111d;
   font-size: 1.25rem;
   line-height: 1.7;
   letter-spacing: 0.01em;
@@ -763,7 +763,7 @@ body.tag #site-header:not(.is-scrolled) .hamburger-line {
   color: black;
   margin: 3.5rem 0 1rem;
   font-weight: 400;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.5px;
 }
 
 .post-content h3 {
@@ -773,7 +773,7 @@ body.tag #site-header:not(.is-scrolled) .hamburger-line {
   font-weight: 400;
   color: black;
   margin: 2.5rem 0 0.75rem;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.5px;
 }
 
 .post-content h4 {
@@ -813,11 +813,11 @@ body.tag #site-header:not(.is-scrolled) .hamburger-line {
 .post-content blockquote::before {
   content: '\201C';
   display: block;
-  font-family: var(--font-heading);
-  font-size: 3rem;
-  color: rgb(194 178 146);
+  font-family: Georgia, serif;
+  font-size: 1.75rem;
+  color: #bbab8b;
   line-height: 1;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
 }
 
 .post-content blockquote p {
@@ -865,4 +865,46 @@ body.tag #site-header:not(.is-scrolled) .hamburger-line {
   border: none;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
   margin: 3rem 0;
+}
+
+.post-content .wp-block-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 2.5rem 0;
+}
+
+.post-content .wp-block-button__link {
+  font-family: var(--font-body);
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 1.45;
+  text-decoration: none;
+  display: inline-block;
+  transition: opacity 0.2s;
+}
+
+.post-content .wp-block-button:not(.is-style-outline) .wp-block-button__link {
+  background: #000000;
+  color: #ffffff;
+  border-radius: 50px;
+  padding: 16px 43px;
+}
+
+.post-content .wp-block-button:not(.is-style-outline) .wp-block-button__link:hover {
+  opacity: 0.8;
+  color: #ffffff;
+}
+
+.post-content .wp-block-button.is-style-outline .wp-block-button__link {
+  background: transparent;
+  color: #000000;
+  border: 1px solid rgba(194, 178, 147, 0.4);
+  border-radius: 80px;
+  padding: 11px 16px;
+}
+
+.post-content .wp-block-button.is-style-outline .wp-block-button__link:hover {
+  border-color: rgba(194, 178, 147, 0.8);
+  color: #000000;
 }
