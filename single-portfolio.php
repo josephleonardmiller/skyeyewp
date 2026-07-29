@@ -15,7 +15,7 @@ $text_3       = get_field( 'text_3' );
 $related = new WP_Query( [
     'post_type'      => 'portfolio',
     'post_status'    => 'publish',
-    'posts_per_page' => 4,
+    'posts_per_page' => 2,
     'post__not_in'   => [ get_the_ID() ],
     'orderby'        => 'menu_order date',
     'order'          => 'ASC',
@@ -127,19 +127,12 @@ $has_hero  = $vimeo_id || $video_thumbnail || has_post_thumbnail();
     </div>
     <?php endif; ?>
 
-    <!-- Text 2 + Text 3: body paragraphs below gallery -->
-    <?php if ( $text_2 || $text_3 ) : ?>
+    <!-- Text 2: body paragraph below gallery -->
+    <?php if ( $text_2 ) : ?>
     <div class="max-w-[780px] mx-auto mt-16 lg:mt-20">
-        <?php if ( $text_2 ) : ?>
-        <p class="font-body text-[1.125rem] font-light text-black leading-[1.556] mb-7">
+        <p class="font-body text-[1.125rem] font-light text-black leading-[1.556]">
             <?php echo nl2br( esc_html( $text_2 ) ); ?>
         </p>
-        <?php endif; ?>
-        <?php if ( $text_3 ) : ?>
-        <p class="font-body text-[1.125rem] font-light text-black leading-[1.556]">
-            <?php echo nl2br( esc_html( $text_3 ) ); ?>
-        </p>
-        <?php endif; ?>
     </div>
     <?php endif; ?>
 
