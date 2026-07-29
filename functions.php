@@ -14,6 +14,21 @@ require_once SKYEYE_DIR . '/inc/acf-fields.php';
 require_once SKYEYE_DIR . '/inc/ajax-form.php';
 require_once SKYEYE_DIR . '/inc/setup-tool.php'; // TODO: remove after Hostinger setup
 
+// Register Primary / Secondary button styles
+add_action( 'init', function() {
+    unregister_block_style( 'core/button', 'fill' );
+    unregister_block_style( 'core/button', 'outline' );
+    register_block_style( 'core/button', [
+        'name'       => 'primary',
+        'label'      => 'Primary',
+        'is_default' => true,
+    ] );
+    register_block_style( 'core/button', [
+        'name'  => 'secondary',
+        'label' => 'Secondary',
+    ] );
+} );
+
 function skyeye_setup() {
     add_theme_support( 'title-tag' );
     add_theme_support( 'post-thumbnails' );
