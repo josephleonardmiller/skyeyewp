@@ -80,9 +80,18 @@ $has_hero  = $vimeo_id || $video_thumbnail || has_post_thumbnail();
 
     <!-- Text 1: lead paragraph (bold, above gallery) -->
     <?php if ( $text_1 ) : ?>
-    <div class="max-w-[780px] mx-auto mb-16 lg:mb-20">
+    <div class="max-w-[780px] mx-auto mb-10 lg:mb-12">
         <p class="font-body text-[1.25rem] font-semibold text-[#0d111d] leading-[1.7] tracking-[0.01em]">
             <?php echo nl2br( esc_html( $text_1 ) ); ?>
+        </p>
+    </div>
+    <?php endif; ?>
+
+    <!-- Text 2: body paragraph above gallery -->
+    <?php if ( $text_2 ) : ?>
+    <div class="max-w-[780px] mx-auto mb-16 lg:mb-20">
+        <p class="font-body text-[1.125rem] font-light text-black leading-[1.556]">
+            <?php echo nl2br( esc_html( $text_2 ) ); ?>
         </p>
     </div>
     <?php endif; ?>
@@ -90,7 +99,7 @@ $has_hero  = $vimeo_id || $video_thumbnail || has_post_thumbnail();
     <!-- Photo gallery — scattered 5-image layout + 2-col overflow -->
     <?php if ( $gallery ) :
         $feature = array_slice( $gallery, 0, 5 );
-        $extra   = array_slice( $gallery, 5 );
+        $extra   = array_slice( $gallery, 5, 2 );
     ?>
 
     <!-- Mobile: stacked column -->
@@ -172,14 +181,6 @@ $has_hero  = $vimeo_id || $video_thumbnail || has_post_thumbnail();
 
     <?php endif; ?>
 
-    <!-- Text 2: body paragraph below gallery -->
-    <?php if ( $text_2 ) : ?>
-    <div class="max-w-[780px] mx-auto mt-16 lg:mt-20">
-        <p class="font-body text-[1.125rem] font-light text-black leading-[1.556]">
-            <?php echo nl2br( esc_html( $text_2 ) ); ?>
-        </p>
-    </div>
-    <?php endif; ?>
 
 </section>
 
