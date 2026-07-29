@@ -92,13 +92,13 @@ $has_hero  = $vimeo_id || $video_thumbnail || has_post_thumbnail();
         $left_imgs  = [];
         $right_imgs = [];
         foreach ( $gallery as $i => $img ) {
-            if ( $i % 2 === 0 ) $left_imgs[] = $img;
-            else $right_imgs[] = $img;
+            if ( $i % 2 === 0 ) $right_imgs[] = $img;
+            else $left_imgs[] = $img;
         }
     ?>
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-[7%]">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-[8.5%]">
 
-        <div class="flex flex-col gap-8 lg:gap-12">
+        <div class="flex flex-col gap-8 lg:gap-12 mt-8 lg:mt-[118px]">
             <?php foreach ( $left_imgs as $img ) : ?>
             <div class="overflow-hidden rounded-xl" style="aspect-ratio:650/433;">
                 <img
@@ -111,7 +111,7 @@ $has_hero  = $vimeo_id || $video_thumbnail || has_post_thumbnail();
             <?php endforeach; ?>
         </div>
 
-        <div class="flex flex-col gap-8 lg:gap-12 mt-8 lg:mt-[118px]">
+        <div class="flex flex-col gap-8 lg:gap-12">
             <?php foreach ( $right_imgs as $img ) : ?>
             <div class="overflow-hidden rounded-xl" style="aspect-ratio:650/433;">
                 <img
