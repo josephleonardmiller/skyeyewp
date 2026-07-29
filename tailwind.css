@@ -663,6 +663,34 @@
   background: none !important;
 }
 
+/* ─── Portfolio single — body content typography ──────────────────────── */
+.portfolio-content {
+  font-family: var(--font-body);
+  font-size: 1.125rem;
+  line-height: 1.556;
+  color: #000000;
+}
+.portfolio-content > p:first-of-type {
+  font-weight: 600;
+  color: #0d111d;
+  font-size: 1.25rem;
+  line-height: 1.7;
+  letter-spacing: 0.01em;
+}
+.portfolio-content p {
+  margin-bottom: 1.75rem;
+  font-weight: 300;
+}
+.portfolio-content h2 {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  line-height: 2.5rem;
+  color: black;
+  margin: 3.5rem 0 1rem;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+
 /* ─── Archive pages — header dark text at top (transparent over cream bg) */
 /* Blog listing + single post excluded: both now have dark heroes */
 /* Portfolio archive excluded: also has dark hero */
