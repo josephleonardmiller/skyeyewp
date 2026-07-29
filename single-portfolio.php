@@ -7,6 +7,9 @@ $location     = get_field( 'location' );
 $wedding_date = get_field( 'wedding_date' );
 $film_url     = get_field( 'film_url' );
 $gallery      = get_field( 'gallery' );
+$text_1       = get_field( 'text_1' );
+$text_2       = get_field( 'text_2' );
+$text_3       = get_field( 'text_3' );
 
 $related = new WP_Query( [
     'post_type'      => 'portfolio',
@@ -67,10 +70,12 @@ $related = new WP_Query( [
 <!-- Cream content area -->
 <section class="bg-brand-100 px-6 lg:px-[8.5%] <?php echo has_post_thumbnail() ? 'pt-0' : 'pt-20 lg:pt-28'; ?> pb-20 lg:pb-28">
 
-    <!-- Body text -->
-    <?php if ( get_the_content() ) : ?>
-    <div class="portfolio-content max-w-[780px] mx-auto mb-16 lg:mb-20">
-        <?php the_content(); ?>
+    <!-- Text 1: lead paragraph (bold, above gallery) -->
+    <?php if ( $text_1 ) : ?>
+    <div class="max-w-[780px] mx-auto mb-16 lg:mb-20">
+        <p class="font-body text-[1.25rem] font-semibold text-[#0d111d] leading-[1.7] tracking-[0.01em]">
+            <?php echo nl2br( esc_html( $text_1 ) ); ?>
+        </p>
     </div>
     <?php endif; ?>
 
@@ -111,6 +116,22 @@ $related = new WP_Query( [
             <?php endforeach; ?>
         </div>
 
+    </div>
+    <?php endif; ?>
+
+    <!-- Text 2 + Text 3: body paragraphs below gallery -->
+    <?php if ( $text_2 || $text_3 ) : ?>
+    <div class="max-w-[780px] mx-auto mt-16 lg:mt-20">
+        <?php if ( $text_2 ) : ?>
+        <p class="font-body text-[1.125rem] font-light text-black leading-[1.556] mb-7">
+            <?php echo nl2br( esc_html( $text_2 ) ); ?>
+        </p>
+        <?php endif; ?>
+        <?php if ( $text_3 ) : ?>
+        <p class="font-body text-[1.125rem] font-light text-black leading-[1.556]">
+            <?php echo nl2br( esc_html( $text_3 ) ); ?>
+        </p>
+        <?php endif; ?>
     </div>
     <?php endif; ?>
 

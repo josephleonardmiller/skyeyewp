@@ -4,7 +4,7 @@ defined( 'ABSPATH' ) || exit;
 
 // Disable Gutenberg for Pages — ACF flexible content is the page builder
 add_filter( 'use_block_editor_for_post', function ( $use_editor, $post ) {
-    if ( $post->post_type === 'page' ) return false;
+    if ( in_array( $post->post_type, [ 'page', 'portfolio' ], true ) ) return false;
     return $use_editor;
 }, 10, 2 );
 
@@ -231,6 +231,30 @@ function skyeye_register_acf_fields() {
                 'type'         => 'text',
                 'placeholder'  => 'e.g. Waterford Castle, Co. Waterford',
                 'instructions' => 'The venue or location of the wedding.',
+            ],
+            [
+                'key'          => 'field_portfolio_text_1',
+                'label'        => 'Text 1 (Lead)',
+                'name'         => 'text_1',
+                'type'         => 'textarea',
+                'rows'         => 4,
+                'instructions' => 'Intro paragraph — displayed bold above the gallery.',
+            ],
+            [
+                'key'          => 'field_portfolio_text_2',
+                'label'        => 'Text 2',
+                'name'         => 'text_2',
+                'type'         => 'textarea',
+                'rows'         => 4,
+                'instructions' => 'Second paragraph — displayed below the gallery.',
+            ],
+            [
+                'key'          => 'field_portfolio_text_3',
+                'label'        => 'Text 3',
+                'name'         => 'text_3',
+                'type'         => 'textarea',
+                'rows'         => 4,
+                'instructions' => 'Third paragraph — displayed below text 2.',
             ],
             [
                 'key'          => 'field_portfolio_wedding_date',
