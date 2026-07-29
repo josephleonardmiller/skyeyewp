@@ -43,29 +43,26 @@ $related = new WP_Query( [
 <?php
 $hero_img_url = $video_thumbnail ? esc_url( $video_thumbnail['url'] ) : '';
 $hero_img_alt = $video_thumbnail ? esc_attr( $video_thumbnail['alt'] ) : esc_attr( get_the_title() );
-$has_hero     = $video_thumbnail || has_post_thumbnail();
+preg_match( '/vimeo\.com\/(\d+)/', $film_url ?? '', $vid_match );
+$vimeo_id = $vid_match[1] ?? null;
+$has_hero  = $vimeo_id || $video_thumbnail || has_post_thumbnail();
 ?>
 <?php if ( $has_hero ) : ?>
 <div class="relative px-6 lg:px-[8.5%] -mt-[220px] lg:-mt-[280px] mb-12 lg:mb-16 z-10">
     <div class="relative overflow-hidden rounded-xl" style="aspect-ratio:1414/778;">
 
-        <!-- Thumbnail + play button — fades out when video plays -->
-        <div id="portfolio-film-thumb" class="absolute inset-0 z-10">
-            <?php if ( $video_thumbnail ) : ?>
-            <img src="<?php echo $hero_img_url; ?>" alt="<?php echo $hero_img_alt; ?>" class="w-full h-full object-cover">
-            <?php else : ?>
-            <?php the_post_thumbnail( 'full', [ 'class' => 'w-full h-full object-cover' ] ); ?>
-            <?php endif; ?>
-
-            <?php if ( $film_url ) : ?>
-            <button id="vimeo-play-btn" type="button" data-vimeo-url="<?php echo esc_attr( $film_url ); ?>"
-                    class="group absolute inset-0 flex items-center justify-center w-full cursor-pointer">
-                <div class="flex items-center justify-center rounded-full bg-[#bcac8e]/80 group-hover:bg-[#bcac8e] transition-colors duration-300" style="width:120px;height:120px;">
-                    <span class="font-heading text-white text-[1.25rem] leading-none tracking-[0.5px]">Play</span>
-                </div>
-            </button>
-            <?php endif; ?>
-        </div>
+        <?php if ( $vimeo_id ) : ?>
+        <iframe
+            src="https://player.vimeo.com/video/<?php echo esc_attr( $vimeo_id ); ?>?title=0&byline=0&portrait=0&dnt=1"
+            style="position:absolute;inset:0;width:100%;height:100%;border:0;"
+            allow="autoplay; fullscreen; picture-in-picture"
+            allowfullscreen
+        ></iframe>
+        <?php elseif ( $video_thumbnail ) : ?>
+        <img src="<?php echo $hero_img_url; ?>" alt="<?php echo $hero_img_alt; ?>" class="absolute inset-0 w-full h-full object-cover">
+        <?php else : ?>
+        <?php the_post_thumbnail( 'full', [ 'class' => 'absolute inset-0 w-full h-full object-cover' ] ); ?>
+        <?php endif; ?>
 
     </div>
 </div>
