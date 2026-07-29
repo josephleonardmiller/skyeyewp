@@ -87,20 +87,65 @@ $has_hero  = $vimeo_id || $video_thumbnail || has_post_thumbnail();
     </div>
     <?php endif; ?>
 
-    <!-- Photo gallery — staggered 2-column -->
+    <!-- Photo gallery — scattered 5-image layout + 2-col overflow -->
     <?php if ( $gallery ) :
-        $left_imgs  = [];
-        $right_imgs = [];
-        foreach ( $gallery as $i => $img ) {
-            if ( $i % 2 === 0 ) $right_imgs[] = $img;
-            else $left_imgs[] = $img;
+        $feature = array_slice( $gallery, 0, 5 );
+        $extra   = array_slice( $gallery, 5 );
+    ?>
+
+    <!-- Mobile: stacked column -->
+    <div class="lg:hidden flex flex-col gap-6">
+        <?php foreach ( $feature as $img ) : ?>
+        <div class="overflow-hidden rounded-xl" style="aspect-ratio:3/2;">
+            <img
+                src="<?php echo esc_url( $img['sizes']['large'] ?? $img['url'] ); ?>"
+                alt="<?php echo esc_attr( $img['alt'] ); ?>"
+                class="w-full h-full object-cover"
+                loading="lazy"
+            >
+        </div>
+        <?php endforeach; ?>
+    </div>
+
+    <!-- Desktop: scattered absolute layout -->
+    <?php
+    $slots  = [
+        'left:27%;top:7%;width:46%;z-index:1;',   // 0: centre (large, behind corners)
+        'left:0%;top:0%;width:23%;z-index:2;',     // 1: upper-left
+        'right:0%;top:0%;width:23%;z-index:2;',    // 2: upper-right
+        'left:0%;top:61%;width:23%;z-index:2;',    // 3: lower-left
+        'right:0%;top:61%;width:23%;z-index:2;',   // 4: lower-right
+    ];
+    $ratios = ['3/2', '7/4', '7/4', '7/4', '7/4'];
+    ?>
+    <div class="hidden lg:block relative" style="padding-bottom:41%;">
+        <?php foreach ( $feature as $i => $img ) :
+            if ( ! isset($slots[$i]) ) continue;
+        ?>
+        <div class="absolute overflow-hidden rounded-xl"
+             style="<?php echo $slots[$i]; ?>aspect-ratio:<?php echo $ratios[$i]; ?>;">
+            <img
+                src="<?php echo esc_url( $img['sizes']['large'] ?? $img['url'] ); ?>"
+                alt="<?php echo esc_attr( $img['alt'] ); ?>"
+                class="w-full h-full object-cover"
+                loading="lazy"
+            >
+        </div>
+        <?php endforeach; ?>
+    </div>
+
+    <!-- Extra images (6+): 2-column staggered -->
+    <?php if ( $extra ) :
+        $left_extra = []; $right_extra = [];
+        foreach ( $extra as $i => $img ) {
+            if ( $i % 2 === 0 ) $right_extra[] = $img;
+            else $left_extra[] = $img;
         }
     ?>
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-[8.5%]">
-
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-[8.5%] mt-8 lg:mt-12">
         <div class="flex flex-col gap-8 lg:gap-12 mt-8 lg:mt-[118px]">
-            <?php foreach ( $left_imgs as $img ) : ?>
-            <div class="overflow-hidden rounded-xl" style="aspect-ratio:650/433;">
+            <?php foreach ( $left_extra as $img ) : ?>
+            <div class="overflow-hidden rounded-xl" style="aspect-ratio:3/2;">
                 <img
                     src="<?php echo esc_url( $img['sizes']['large'] ?? $img['url'] ); ?>"
                     alt="<?php echo esc_attr( $img['alt'] ); ?>"
@@ -110,10 +155,9 @@ $has_hero  = $vimeo_id || $video_thumbnail || has_post_thumbnail();
             </div>
             <?php endforeach; ?>
         </div>
-
         <div class="flex flex-col gap-8 lg:gap-12">
-            <?php foreach ( $right_imgs as $img ) : ?>
-            <div class="overflow-hidden rounded-xl" style="aspect-ratio:650/433;">
+            <?php foreach ( $right_extra as $img ) : ?>
+            <div class="overflow-hidden rounded-xl" style="aspect-ratio:3/2;">
                 <img
                     src="<?php echo esc_url( $img['sizes']['large'] ?? $img['url'] ); ?>"
                     alt="<?php echo esc_attr( $img['alt'] ); ?>"
@@ -123,8 +167,9 @@ $has_hero  = $vimeo_id || $video_thumbnail || has_post_thumbnail();
             </div>
             <?php endforeach; ?>
         </div>
-
     </div>
+    <?php endif; ?>
+
     <?php endif; ?>
 
     <!-- Text 2: body paragraph below gallery -->
