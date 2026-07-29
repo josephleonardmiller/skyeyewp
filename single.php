@@ -52,6 +52,28 @@ $related_query = new WP_Query( $related_args );
         <article class="post-content mx-auto" style="max-width:780px;">
             <?php the_content(); ?>
         </article>
+
+        <!-- Post navigation -->
+        <?php
+        $next_post = get_next_post();
+        $prev_post = get_previous_post();
+        if ( $next_post || $prev_post ) :
+        ?>
+        <div class="mx-auto flex flex-wrap items-center gap-6 mt-10" style="max-width:780px;">
+            <?php if ( $next_post ) : ?>
+            <a href="<?php echo esc_url( get_permalink( $next_post ) ); ?>"
+               class="font-body text-[1.25rem] text-white bg-black rounded-[50px] px-11 py-4 hover:opacity-80 transition-opacity duration-200 whitespace-nowrap">
+                Next article
+            </a>
+            <?php endif; ?>
+            <?php if ( $prev_post ) : ?>
+            <a href="<?php echo esc_url( get_permalink( $prev_post ) ); ?>"
+               class="font-body text-[1.25rem] text-black border border-[#c2b293]/40 rounded-[80px] px-4 py-3 hover:border-[#c2b293]/80 transition-colors duration-200 whitespace-nowrap">
+                Previous article
+            </a>
+            <?php endif; ?>
+        </div>
+        <?php endif; ?>
     </div>
 
 </section>

@@ -814,7 +814,7 @@ body.tag #site-header:not(.is-scrolled) .hamburger-line {
   content: '\201C';
   display: block;
   font-family: Georgia, serif;
-  font-size: 1.75rem;
+  font-size: 3.5rem;
   color: #bbab8b;
   line-height: 1;
   margin-bottom: 0.75rem;
