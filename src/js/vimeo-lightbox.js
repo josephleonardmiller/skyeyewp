@@ -1,11 +1,10 @@
 export function initVimeoLightbox() {
-  const lightbox = document.getElementById('vimeo-lightbox')
-  if (!lightbox) return
+  const playBtn = document.getElementById('vimeo-play-btn')
+  if (!playBtn) return
 
-  const iframe   = document.getElementById('vimeo-iframe')
-  const closeBtn = document.getElementById('vimeo-close')
-  const trigger  = document.getElementById('vimeo-play-btn')
-  if (!iframe || !trigger) return
+  const thumb  = document.getElementById('portfolio-film-thumb')
+  const iframe = document.getElementById('vimeo-iframe')
+  if (!thumb || !iframe) return
 
   function getEmbedUrl(raw) {
     const match = raw.match(/vimeo\.com\/(\d+)/)
@@ -13,30 +12,11 @@ export function initVimeoLightbox() {
     return `https://player.vimeo.com/video/${match[1]}?autoplay=1&color=bbab8b&title=0&byline=0&portrait=0`
   }
 
-  function openLightbox() {
-    const url = getEmbedUrl(trigger.dataset.vimeoUrl || '')
+  playBtn.addEventListener('click', () => {
+    const url = getEmbedUrl(playBtn.dataset.vimeoUrl || '')
     if (!url) return
     iframe.src = url
-    lightbox.classList.remove('hidden')
-    lightbox.setAttribute('aria-hidden', 'false')
-    document.body.style.overflow = 'hidden'
-  }
-
-  function closeLightbox() {
-    iframe.src = ''
-    lightbox.classList.add('hidden')
-    lightbox.setAttribute('aria-hidden', 'true')
-    document.body.style.overflow = ''
-  }
-
-  trigger.addEventListener('click', openLightbox)
-  if (closeBtn) closeBtn.addEventListener('click', closeLightbox)
-
-  lightbox.addEventListener('click', (e) => {
-    if (e.target === lightbox) closeLightbox()
-  })
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeLightbox()
+    thumb.classList.add('hidden')
+    iframe.classList.remove('hidden')
   })
 }

@@ -47,48 +47,33 @@ $has_hero     = $video_thumbnail || has_post_thumbnail();
 ?>
 <?php if ( $has_hero ) : ?>
 <div class="relative px-6 lg:px-[8.5%] -mt-[220px] lg:-mt-[280px] mb-12 lg:mb-16 z-10">
-    <?php if ( $film_url ) : ?>
-    <button id="vimeo-play-btn" type="button" data-vimeo-url="<?php echo esc_attr( $film_url ); ?>" class="group block relative w-full cursor-pointer">
-    <?php else : ?>
-    <div class="relative">
-    <?php endif; ?>
+    <div class="relative overflow-hidden rounded-xl" style="aspect-ratio:1414/778;">
 
-        <div class="overflow-hidden rounded-xl" style="aspect-ratio:1414/778;">
+        <!-- Thumbnail + play button (swapped out on click) -->
+        <div id="portfolio-film-thumb" class="relative w-full h-full">
             <?php if ( $video_thumbnail ) : ?>
             <img src="<?php echo $hero_img_url; ?>" alt="<?php echo $hero_img_alt; ?>" class="w-full h-full object-cover">
             <?php else : ?>
             <?php the_post_thumbnail( 'full', [ 'class' => 'w-full h-full object-cover' ] ); ?>
             <?php endif; ?>
+
+            <?php if ( $film_url ) : ?>
+            <button id="vimeo-play-btn" type="button" data-vimeo-url="<?php echo esc_attr( $film_url ); ?>"
+                    class="group absolute inset-0 flex items-center justify-center w-full cursor-pointer">
+                <div class="flex items-center justify-center rounded-full bg-[#bcac8e]/80 group-hover:bg-[#bcac8e] transition-colors duration-300" style="width:120px;height:120px;">
+                    <span class="font-heading text-white text-[1.25rem] leading-none tracking-[0.5px]">Play</span>
+                </div>
+            </button>
+            <?php endif; ?>
         </div>
 
+        <!-- Vimeo iframe — hidden until Play clicked -->
         <?php if ( $film_url ) : ?>
-        <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
-            <div class="flex items-center justify-center rounded-full bg-[#bcac8e]/80 group-hover:bg-[#bcac8e] transition-colors duration-300" style="width:120px;height:120px;">
-                <span class="font-heading text-white text-[1.25rem] leading-none tracking-[0.5px]">Play</span>
-            </div>
-        </div>
+        <iframe id="vimeo-iframe" src="" frameborder="0"
+                allow="autoplay; fullscreen; picture-in-picture" allowfullscreen
+                class="absolute inset-0 w-full h-full hidden"></iframe>
         <?php endif; ?>
 
-    <?php if ( $film_url ) : ?>
-    </button>
-    <?php else : ?>
-    </div>
-    <?php endif; ?>
-</div>
-<?php endif; ?>
-
-<!-- Vimeo lightbox -->
-<?php if ( $film_url ) : ?>
-<div id="vimeo-lightbox" class="fixed inset-0 z-[200] bg-black/90 flex items-center justify-center hidden" aria-hidden="true" role="dialog" aria-label="Wedding film">
-    <button id="vimeo-close" type="button" aria-label="Close video" class="absolute top-6 right-6 text-white opacity-70 hover:opacity-100 transition-opacity duration-200">
-        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-            <path d="M24 8L8 24M8 8l16 16"/>
-        </svg>
-    </button>
-    <div class="w-full max-w-[1100px] px-6">
-        <div class="relative w-full rounded-xl overflow-hidden" style="aspect-ratio:16/9;">
-            <iframe id="vimeo-iframe" src="" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen class="absolute inset-0 w-full h-full"></iframe>
-        </div>
     </div>
 </div>
 <?php endif; ?>
