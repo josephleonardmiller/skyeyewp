@@ -49,14 +49,7 @@ $has_hero     = $video_thumbnail || has_post_thumbnail();
 <div class="relative px-6 lg:px-[8.5%] -mt-[220px] lg:-mt-[280px] mb-12 lg:mb-16 z-10">
     <div class="relative overflow-hidden rounded-xl" style="aspect-ratio:1414/778;">
 
-        <!-- Vimeo iframe — loads in background underneath thumbnail -->
-        <?php if ( $film_url ) : ?>
-        <iframe id="vimeo-iframe" src="" frameborder="0"
-                allow="autoplay; fullscreen; picture-in-picture" allowfullscreen
-                class="absolute inset-0 w-full h-full"></iframe>
-        <?php endif; ?>
-
-        <!-- Thumbnail + play button — sits on top, fades out when video plays -->
+        <!-- Thumbnail + play button — fades out when video plays -->
         <div id="portfolio-film-thumb" class="absolute inset-0 z-10">
             <?php if ( $video_thumbnail ) : ?>
             <img src="<?php echo $hero_img_url; ?>" alt="<?php echo $hero_img_alt; ?>" class="w-full h-full object-cover">
