@@ -269,7 +269,16 @@ function skyeye_register_acf_fields() {
                 'label'        => 'Film URL',
                 'name'         => 'film_url',
                 'type'         => 'url',
-                'instructions' => 'Link to the wedding film (Vimeo, YouTube, etc.). Displays a Play button on the hero image.',
+                'instructions' => 'Vimeo URL for the wedding film (e.g. https://vimeo.com/123456789). Shows a Play button that opens the film in an overlay.',
+            ],
+            [
+                'key'           => 'field_portfolio_video_thumbnail',
+                'label'         => 'Video Thumbnail',
+                'name'          => 'video_thumbnail',
+                'type'          => 'image',
+                'return_format' => 'array',
+                'preview_size'  => 'medium',
+                'instructions'  => 'Hero image shown on the detail page with the Play button. The Featured Image is used for archive/listing thumbnails.',
             ],
             [
                 'key'           => 'field_portfolio_gallery',

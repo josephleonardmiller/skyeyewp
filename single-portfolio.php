@@ -5,8 +5,9 @@ while ( have_posts() ) : the_post();
 
 $location     = get_field( 'location' );
 $wedding_date = get_field( 'wedding_date' );
-$film_url     = get_field( 'film_url' );
-$gallery      = get_field( 'gallery' );
+$film_url         = get_field( 'film_url' );
+$video_thumbnail  = get_field( 'video_thumbnail' );
+$gallery          = get_field( 'gallery' );
 $text_1       = get_field( 'text_1' );
 $text_2       = get_field( 'text_2' );
 $text_3       = get_field( 'text_3' );
@@ -39,16 +40,25 @@ $related = new WP_Query( [
 </section>
 
 <!-- Hero image — pulled up over black hero, transitions into cream below -->
-<?php if ( has_post_thumbnail() ) : ?>
+<?php
+$hero_img_url = $video_thumbnail ? esc_url( $video_thumbnail['url'] ) : '';
+$hero_img_alt = $video_thumbnail ? esc_attr( $video_thumbnail['alt'] ) : esc_attr( get_the_title() );
+$has_hero     = $video_thumbnail || has_post_thumbnail();
+?>
+<?php if ( $has_hero ) : ?>
 <div class="relative px-6 lg:px-[8.5%] -mt-[220px] lg:-mt-[280px] mb-12 lg:mb-16 z-10">
     <?php if ( $film_url ) : ?>
-    <a href="<?php echo esc_url( $film_url ); ?>" target="_blank" rel="noopener" class="group block relative">
+    <button id="vimeo-play-btn" type="button" data-vimeo-url="<?php echo esc_attr( $film_url ); ?>" class="group block relative w-full cursor-pointer">
     <?php else : ?>
     <div class="relative">
     <?php endif; ?>
 
         <div class="overflow-hidden rounded-xl" style="aspect-ratio:1414/778;">
+            <?php if ( $video_thumbnail ) : ?>
+            <img src="<?php echo $hero_img_url; ?>" alt="<?php echo $hero_img_alt; ?>" class="w-full h-full object-cover">
+            <?php else : ?>
             <?php the_post_thumbnail( 'full', [ 'class' => 'w-full h-full object-cover' ] ); ?>
+            <?php endif; ?>
         </div>
 
         <?php if ( $film_url ) : ?>
@@ -60,15 +70,31 @@ $related = new WP_Query( [
         <?php endif; ?>
 
     <?php if ( $film_url ) : ?>
-    </a>
+    </button>
     <?php else : ?>
     </div>
     <?php endif; ?>
 </div>
 <?php endif; ?>
 
+<!-- Vimeo lightbox -->
+<?php if ( $film_url ) : ?>
+<div id="vimeo-lightbox" class="fixed inset-0 z-[200] bg-black/90 flex items-center justify-center hidden" aria-hidden="true" role="dialog" aria-label="Wedding film">
+    <button id="vimeo-close" type="button" aria-label="Close video" class="absolute top-6 right-6 text-white opacity-70 hover:opacity-100 transition-opacity duration-200">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M24 8L8 24M8 8l16 16"/>
+        </svg>
+    </button>
+    <div class="w-full max-w-[1100px] px-6">
+        <div class="relative w-full rounded-xl overflow-hidden" style="aspect-ratio:16/9;">
+            <iframe id="vimeo-iframe" src="" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen class="absolute inset-0 w-full h-full"></iframe>
+        </div>
+    </div>
+</div>
+<?php endif; ?>
+
 <!-- Cream content area -->
-<section class="bg-brand-100 px-6 lg:px-[8.5%] <?php echo has_post_thumbnail() ? 'pt-0' : 'pt-20 lg:pt-28'; ?> pb-20 lg:pb-28">
+<section class="bg-brand-100 px-6 lg:px-[8.5%] <?php echo $has_hero ? 'pt-0' : 'pt-20 lg:pt-28'; ?> pb-20 lg:pb-28">
 
     <!-- Text 1: lead paragraph (bold, above gallery) -->
     <?php if ( $text_1 ) : ?>

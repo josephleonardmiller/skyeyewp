@@ -9,6 +9,7 @@ import { initCursor } from './cursor.js'
 import { initHeader } from './header.js'
 import { initPageTransitions } from './page-transition.js'
 import { initContactForm } from './contact-form.js'
+import { initVimeoLightbox } from './vimeo-lightbox.js'
 
 gsap.registerPlugin(ScrollTrigger, CustomEase)
 
@@ -24,4 +25,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initTestimonials()
   initContact()
   initFormSection()
+  initVimeoLightbox()
 })
