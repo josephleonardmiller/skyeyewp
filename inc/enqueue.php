@@ -57,6 +57,18 @@ function skyeye_dequeue_block_styles() {
 }
 add_action( 'wp_enqueue_scripts', 'skyeye_dequeue_block_styles', 100 );
 
+// Swap Fill/Outline with Primary/Secondary in the block editor
+add_action( 'enqueue_block_editor_assets', function() {
+    wp_add_inline_script( 'wp-blocks',
+        "wp.domReady(function(){
+            wp.blocks.unregisterBlockStyle('core/button','fill');
+            wp.blocks.unregisterBlockStyle('core/button','outline');
+            wp.blocks.registerBlockStyle('core/button',{name:'primary',label:'Primary',isDefault:true});
+            wp.blocks.registerBlockStyle('core/button',{name:'secondary',label:'Secondary'});
+        });"
+    );
+} );
+
 // Strip all Gravity Forms CSS — we provide our own styles
 add_filter( 'gform_disable_css', '__return_true' );
 add_action( 'wp_print_styles', function() {
