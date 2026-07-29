@@ -52,12 +52,19 @@ $has_hero  = $vimeo_id || $video_thumbnail || has_post_thumbnail();
     <div class="relative overflow-hidden rounded-xl" style="aspect-ratio:1414/778;">
 
         <?php if ( $vimeo_id ) : ?>
-        <iframe
+        <iframe id="portfolio-vimeo"
             src="https://player.vimeo.com/video/<?php echo esc_attr( $vimeo_id ); ?>?title=0&byline=0&portrait=0&dnt=1"
             style="position:absolute;inset:0;width:100%;height:100%;border:0;"
             allow="autoplay; fullscreen; picture-in-picture"
             allowfullscreen
         ></iframe>
+
+        <!-- Gold play overlay — removed by JS on click -->
+        <div id="portfolio-play-overlay" class="group/play absolute inset-0 z-10 flex items-center justify-center cursor-pointer">
+            <div class="flex items-center justify-center rounded-full bg-[#bcac8e]/80 group-hover/play:bg-[#bcac8e] transition-colors duration-300" style="width:120px;height:120px;">
+                <span class="font-heading text-white text-[1.25rem] leading-none tracking-[0.5px]">Play</span>
+            </div>
+        </div>
         <?php elseif ( $video_thumbnail ) : ?>
         <img src="<?php echo $hero_img_url; ?>" alt="<?php echo $hero_img_alt; ?>" class="absolute inset-0 w-full h-full object-cover">
         <?php else : ?>
