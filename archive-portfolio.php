@@ -25,7 +25,7 @@ foreach ( $items as $i => $item ) {
 ?>
 
 <!-- Dark hero -->
-<section class="relative bg-black min-h-[500px] flex flex-col items-center justify-center text-center px-6 pt-40 lg:pt-48">
+<section class="relative bg-black text-center px-6 pt-40 lg:pt-48 pb-20 lg:pb-28">
     <div class="container mx-auto">
         <h1 class="font-heading text-5xl lg:text-[3rem] text-[#f8f5ef] mb-6 leading-tight">
             Portfolio
