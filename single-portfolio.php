@@ -8,9 +8,11 @@ $wedding_date = get_field( 'wedding_date' );
 $film_url         = get_field( 'film_url' );
 $video_thumbnail  = get_field( 'video_thumbnail' );
 $gallery          = get_field( 'gallery' );
-$text_1       = get_field( 'text_1' );
-$text_2       = get_field( 'text_2' );
-$text_3       = get_field( 'text_3' );
+$text_1             = get_field( 'text_1' );
+$text_2             = get_field( 'text_2' );
+$text_3             = get_field( 'text_3' );
+$quote              = get_field( 'quote' );
+$quote_attribution  = get_field( 'quote_attribution' );
 
 $related = new WP_Query( [
     'post_type'      => 'portfolio',
@@ -142,6 +144,21 @@ $has_hero  = $vimeo_id || $video_thumbnail || has_post_thumbnail();
         </div>
         <?php endforeach; ?>
     </div>
+
+    <!-- Quote -->
+    <?php if ( $quote ) : ?>
+    <div class="max-w-[700px] mx-auto py-16 lg:py-20 text-center">
+        <p class="font-heading text-[#bcac8e] text-[3rem] leading-none mb-6">"</p>
+        <p class="font-heading italic text-[1.5rem] lg:text-[1.75rem] text-[#0d111d] leading-[1.6]">
+            <?php echo esc_html( $quote ); ?>
+        </p>
+        <?php if ( $quote_attribution ) : ?>
+        <p class="font-body text-[0.875rem] text-[#bbab8b] tracking-[0.5px] mt-5">
+            <?php echo esc_html( $quote_attribution ); ?>
+        </p>
+        <?php endif; ?>
+    </div>
+    <?php endif; ?>
 
     <!-- Extra images (6+): 2-column staggered -->
     <?php if ( $extra ) :

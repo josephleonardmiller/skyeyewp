@@ -246,7 +246,7 @@ function skyeye_register_acf_fields() {
                 'name'         => 'text_2',
                 'type'         => 'textarea',
                 'rows'         => 4,
-                'instructions' => 'Second paragraph — displayed below the gallery.',
+                'instructions' => 'Second paragraph — displayed above the gallery.',
             ],
             [
                 'key'          => 'field_portfolio_text_3',
@@ -255,6 +255,22 @@ function skyeye_register_acf_fields() {
                 'type'         => 'textarea',
                 'rows'         => 4,
                 'instructions' => 'Third paragraph — displayed below text 2.',
+            ],
+            [
+                'key'          => 'field_portfolio_quote',
+                'label'        => 'Quote',
+                'name'         => 'quote',
+                'type'         => 'textarea',
+                'rows'         => 4,
+                'instructions' => 'Client testimonial — displayed in the middle of the photo gallery.',
+            ],
+            [
+                'key'          => 'field_portfolio_quote_attribution',
+                'label'        => 'Quote Attribution',
+                'name'         => 'quote_attribution',
+                'type'         => 'text',
+                'placeholder'  => 'e.g. Alwyn & Paul',
+                'instructions' => 'Name displayed below the quote.',
             ],
             [
                 'key'          => 'field_portfolio_wedding_date',
