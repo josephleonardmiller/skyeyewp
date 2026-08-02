@@ -29,12 +29,12 @@ foreach ( $items as $i => $item ) {
 ?>
 
 <!-- Dark hero -->
-<section class="relative bg-black min-h-[500px] flex flex-col items-center justify-center text-center px-6 pt-40 lg:pt-48">
+<section class="bg-black text-center px-6 pt-40 lg:pt-48 pb-16 lg:pb-20">
     <div class="container mx-auto">
-        <h1 class="font-heading text-5xl lg:text-[3rem] text-[#f8f5ef] mb-6 leading-tight">
+        <h1 class="font-heading text-[2rem] lg:text-[3rem] text-[#f8f5ef] mb-4 leading-tight" style="letter-spacing:-2px;">
             <?php the_title(); ?>
         </h1>
-        <p class="font-body text-lg lg:text-[1.25rem] font-light text-[#f8f5ef] leading-relaxed">
+        <p class="font-body text-[1.125rem] lg:text-[1.25rem] font-light text-[#bbab8b] leading-relaxed">
             Your go-to resource for wedding film inspiration, planning tips, and behind-the-scenes stories.
         </p>
     </div>
