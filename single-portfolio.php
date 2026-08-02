@@ -61,9 +61,14 @@ $has_hero  = $vimeo_id || $video_thumbnail || has_post_thumbnail();
             allowfullscreen
         ></iframe>
 
-        <!-- Gold play overlay — removed by JS on click -->
+        <!-- Play overlay — custom thumbnail poster + play button, removed by JS on click -->
         <div id="portfolio-play-overlay" class="group/play absolute inset-0 z-10 flex items-center justify-center cursor-pointer">
-            <div class="flex items-center justify-center rounded-full bg-[#bcac8e]/80 group-hover/play:bg-[#bcac8e] transition-colors duration-300 w-20 h-20 lg:w-[120px] lg:h-[120px]">
+            <?php if ( $video_thumbnail ) : ?>
+            <img src="<?php echo esc_url( $video_thumbnail['sizes']['large'] ?? $video_thumbnail['url'] ); ?>"
+                 alt="<?php echo esc_attr( $video_thumbnail['alt'] ); ?>"
+                 class="absolute inset-0 w-full h-full object-cover">
+            <?php endif; ?>
+            <div class="relative flex items-center justify-center rounded-full bg-[#bcac8e]/80 group-hover/play:bg-[#bcac8e] transition-colors duration-300 w-20 h-20 lg:w-[120px] lg:h-[120px]">
                 <span class="font-heading text-white text-[1.25rem] leading-none tracking-[0.5px]">Play</span>
             </div>
         </div>
