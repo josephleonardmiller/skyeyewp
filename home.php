@@ -45,7 +45,7 @@ $wp_query->max_num_pages = $grid_query->max_num_pages;
 ?>
 
 <!-- Blog hero — dark background, cream text -->
-<section class="relative bg-black min-h-[500px] flex flex-col items-center justify-center text-center px-6 pt-40 lg:pt-48">
+<section class="bg-black text-center px-6 pt-40 lg:pt-48 pb-16 lg:pb-20">
     <div class="container mx-auto">
         <h1 class="font-heading text-5xl lg:text-[4rem] text-[#f8f5ef] mb-6 leading-tight">
             Wedding video tips &amp; guides
