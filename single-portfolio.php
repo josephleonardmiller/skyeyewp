@@ -63,7 +63,7 @@ $has_hero  = $vimeo_id || $video_thumbnail || has_post_thumbnail();
 
         <!-- Gold play overlay — removed by JS on click -->
         <div id="portfolio-play-overlay" class="group/play absolute inset-0 z-10 flex items-center justify-center cursor-pointer">
-            <div class="flex items-center justify-center rounded-full bg-[#bcac8e]/80 group-hover/play:bg-[#bcac8e] transition-colors duration-300" style="width:120px;height:120px;">
+            <div class="flex items-center justify-center rounded-full bg-[#bcac8e]/80 group-hover/play:bg-[#bcac8e] transition-colors duration-300 w-20 h-20 lg:w-[120px] lg:h-[120px]">
                 <span class="font-heading text-white text-[1.25rem] leading-none tracking-[0.5px]">Play</span>
             </div>
         </div>
@@ -78,7 +78,7 @@ $has_hero  = $vimeo_id || $video_thumbnail || has_post_thumbnail();
 <?php endif; ?>
 
 <!-- Cream content area -->
-<section class="bg-brand-100 px-6 lg:px-[8.5%] <?php echo $has_hero ? 'pt-0' : 'pt-20 lg:pt-28'; ?> pb-20 lg:pb-28">
+<section class="bg-brand-100 px-6 lg:px-[8.5%] <?php echo $has_hero ? 'pt-8 lg:pt-0' : 'pt-20 lg:pt-28'; ?> pb-20 lg:pb-28">
 
     <!-- Text 1: lead paragraph (bold, above gallery) -->
     <?php if ( $text_1 ) : ?>
@@ -149,7 +149,7 @@ $has_hero  = $vimeo_id || $video_thumbnail || has_post_thumbnail();
     <?php if ( $quote ) : ?>
     <div class="max-w-[700px] mx-auto py-16 lg:py-20 text-center">
         <p class="font-heading text-[#bcac8e] text-[3rem] leading-none mb-6">"</p>
-        <p class="font-heading text-[1.5rem] text-black leading-[46px] tracking-[0.5px]">
+        <p class="font-heading text-[1.125rem] lg:text-[1.5rem] text-black leading-[1.7] lg:leading-[46px] tracking-[0.5px]">
             <?php echo esc_html( $quote ); ?>
         </p>
         <?php if ( $quote_attribution ) : ?>
@@ -168,7 +168,7 @@ $has_hero  = $vimeo_id || $video_thumbnail || has_post_thumbnail();
             else $left_extra[] = $img;
         }
     ?>
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-[8.5%] mt-8 lg:mt-12">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-[8.5%] gap-y-6 lg:gap-y-0 mt-8 lg:mt-12">
         <div class="flex flex-col gap-8 lg:gap-12 mt-8 lg:mt-[118px]">
             <?php foreach ( $left_extra as $img ) : ?>
             <div class="overflow-hidden rounded-xl" style="aspect-ratio:3/2;">
