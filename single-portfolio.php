@@ -149,7 +149,7 @@ $has_hero  = $vimeo_id || $video_thumbnail || has_post_thumbnail();
     <?php if ( $quote ) : ?>
     <div class="max-w-[700px] mx-auto py-16 lg:py-20 text-center">
         <p class="font-heading text-[#bcac8e] text-[3rem] leading-none mb-6">"</p>
-        <p class="font-heading italic text-[1.5rem] lg:text-[1.75rem] text-[#0d111d] leading-[1.6]">
+        <p class="font-heading text-[1.5rem] text-black leading-[46px] tracking-[0.5px]">
             <?php echo esc_html( $quote ); ?>
         </p>
         <?php if ( $quote_attribution ) : ?>
