@@ -31,7 +31,7 @@ foreach ( $items as $i => $item ) {
 <!-- Dark hero -->
 <section class="bg-black text-center px-6 pt-40 lg:pt-48 pb-16 lg:pb-20">
     <div class="container mx-auto">
-        <h1 class="font-heading text-[2rem] lg:text-[3rem] text-[#f8f5ef] mb-4 leading-tight" style="letter-spacing:-2px;">
+        <h1 class="font-heading text-[2.25rem] lg:text-[3rem] text-[#f8f5ef] mb-4 leading-tight" style="letter-spacing:-2px;">
             <?php the_title(); ?>
         </h1>
         <p class="font-body text-[1.125rem] lg:text-[1.25rem] font-light text-[#bbab8b] leading-relaxed">

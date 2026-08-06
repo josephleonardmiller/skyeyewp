@@ -27,7 +27,7 @@ $related = new WP_Query( [
 <!-- Dark hero — couple name + location/date -->
 <section class="bg-black text-center px-6 pt-40 lg:pt-48 pb-[220px] lg:pb-[280px]">
     <div class="container mx-auto pb-12 lg:pb-16">
-        <h1 class="font-heading text-[3rem] lg:text-[4rem] text-[#f8f5ef] leading-tight mb-3" style="letter-spacing:-2px;">
+        <h1 class="font-heading text-[2.625rem] lg:text-[4rem] text-[#f8f5ef] leading-tight mb-3" style="letter-spacing:-2px;">
             <?php the_title(); ?>
         </h1>
         <?php
