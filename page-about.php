@@ -126,93 +126,78 @@ $portfolio_url = get_post_type_archive_link( 'portfolio' ) ?: '/portfolio';
 <!-- ── Gallery break ──────────────────────────────────────────────────────── -->
 <section class="bg-brand-100 pb-20 lg:pb-24 overflow-hidden">
 
-    <!-- Desktop: left portrait | large centre | right portrait -->
-    <div class="hidden lg:flex items-stretch gap-0 px-[8.5%]">
+    <?php
+    // Slot positions (desktop scattered layout): left, top, width, aspect-ratio
+    $slots = [
+        [ 'left:17%',    'top:4%',    'width:28%', '3/2' ],  // 0: upper-left landscape
+        [ 'right:16%',   'top:0%',    'width:28%', '3/2' ],  // 1: upper-right landscape
+        [ 'right:-2%',   'top:1%',    'width:14%', '2/3' ],  // 2: far-right portrait
+        [ 'left:-2%',    'top:30%',   'width:14%', '2/3' ],  // 3: far-left portrait
+        [ 'left:20%',    'bottom:5%', 'width:26%', '3/2' ],  // 4: lower-centre landscape
+        [ 'right:5%',    'bottom:8%', 'width:13%', '2/3' ],  // 5: lower-right portrait
+    ];
+    ?>
 
-        <?php if ( $gal_left ) : ?>
-        <div class="w-[13%] shrink-0 overflow-hidden rounded-xl mr-4" style="aspect-ratio:2/3;">
-            <img src="<?php echo esc_url( $gal_left['sizes']['large'] ?? $gal_left['url'] ); ?>"
-                 alt="<?php echo esc_attr( $gal_left['alt'] ); ?>"
-                 class="w-full h-full object-cover">
-        </div>
-        <?php endif; ?>
+    <!-- Desktop: scattered absolute layout -->
+    <div class="hidden lg:block relative" style="padding-bottom:58%;">
 
-        <div class="flex-1 overflow-hidden rounded-xl" style="aspect-ratio:986/700;">
-            <?php if ( $gal_center ) : ?>
-            <img src="<?php echo esc_url( $gal_center['sizes']['large'] ?? $gal_center['url'] ); ?>"
-                 alt="<?php echo esc_attr( $gal_center['alt'] ); ?>"
-                 class="w-full h-full object-cover">
-            <?php else : ?>
-            <div class="w-full h-full bg-[#e8e2d9]"></div>
-            <?php endif; ?>
-        </div>
-
-        <?php if ( $gal_right ) : ?>
-        <div class="w-[13%] shrink-0 overflow-hidden rounded-xl ml-4" style="aspect-ratio:2/3;">
-            <img src="<?php echo esc_url( $gal_right['sizes']['large'] ?? $gal_right['url'] ); ?>"
-                 alt="<?php echo esc_attr( $gal_right['alt'] ); ?>"
-                 class="w-full h-full object-cover">
-        </div>
-        <?php endif; ?>
-
-    </div>
-
-    <!-- Mobile: stacked -->
-    <div class="lg:hidden flex flex-col gap-4 px-6">
-        <?php if ( $gal_center ) : ?>
-        <div class="overflow-hidden rounded-xl" style="aspect-ratio:4/3;">
-            <img src="<?php echo esc_url( $gal_center['sizes']['large'] ?? $gal_center['url'] ); ?>"
-                 alt="<?php echo esc_attr( $gal_center['alt'] ); ?>"
-                 class="w-full h-full object-cover">
-        </div>
-        <?php endif; ?>
-        <?php if ( $gal_left || $gal_right ) : ?>
-        <div class="grid grid-cols-2 gap-4">
-            <?php if ( $gal_left ) : ?>
-            <div class="overflow-hidden rounded-xl" style="aspect-ratio:3/4;">
-                <img src="<?php echo esc_url( $gal_left['sizes']['medium'] ?? $gal_left['url'] ); ?>"
-                     alt="<?php echo esc_attr( $gal_left['alt'] ); ?>"
-                     class="w-full h-full object-cover">
-            </div>
-            <?php endif; ?>
-            <?php if ( $gal_right ) : ?>
-            <div class="overflow-hidden rounded-xl" style="aspect-ratio:3/4;">
-                <img src="<?php echo esc_url( $gal_right['sizes']['medium'] ?? $gal_right['url'] ); ?>"
-                     alt="<?php echo esc_attr( $gal_right['alt'] ); ?>"
-                     class="w-full h-full object-cover">
-            </div>
-            <?php endif; ?>
-        </div>
-        <?php endif; ?>
-    </div>
-
-    <!-- Testimonial quote -->
-    <?php if ( $gal_quote ) : ?>
-    <div class="max-w-[700px] mx-auto py-16 lg:py-20 text-center px-6">
-        <p class="font-heading text-[#bcac8e] text-[3rem] leading-none mb-6">"</p>
-        <p class="font-heading text-[1.125rem] lg:text-[1.5rem] text-black leading-[1.7] lg:leading-[46px] tracking-[0.5px]">
-            <?php echo esc_html( $gal_quote ); ?>
-        </p>
-        <?php if ( $gal_quote_attr ) : ?>
-        <p class="font-body text-[0.875rem] text-[#bbab8b] tracking-[0.5px] mt-5">
-            <?php echo esc_html( $gal_quote_attr ); ?>
-        </p>
-        <?php endif; ?>
-    </div>
-    <?php endif; ?>
-
-    <!-- Extra images (4–6): 3-column row -->
-    <?php if ( $gal_extra ) : ?>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4 px-6 lg:px-[8.5%]">
-        <?php foreach ( $gal_extra as $img ) : ?>
-        <div class="overflow-hidden rounded-xl" style="aspect-ratio:3/2;">
+        <?php foreach ( $gal_rows as $i => $row ) :
+            if ( ! isset( $slots[$i] ) || empty( $row['image'] ) ) continue;
+            $img  = $row['image'];
+            $slot = $slots[$i];
+            $style = implode( ';', array_slice( $slot, 0, 3 ) ) . ';aspect-ratio:' . $slot[3] . ';';
+        ?>
+        <div class="absolute overflow-hidden rounded-xl" style="<?php echo $style; ?>">
             <img src="<?php echo esc_url( $img['sizes']['large'] ?? $img['url'] ); ?>"
                  alt="<?php echo esc_attr( $img['alt'] ); ?>"
                  class="w-full h-full object-cover">
         </div>
         <?php endforeach; ?>
+
+        <!-- Quote: centred over the composition -->
+        <?php if ( $gal_quote ) : ?>
+        <div class="absolute text-center" style="left:33%;right:33%;top:50%;transform:translateY(-50%);">
+            <p class="font-heading text-[#bcac8e] text-[3rem] leading-none mb-4">"</p>
+            <p class="font-heading text-[1.25rem] text-black leading-[1.65] tracking-[0.5px]">
+                <?php echo esc_html( $gal_quote ); ?>
+            </p>
+            <?php if ( $gal_quote_attr ) : ?>
+            <p class="font-body text-[0.875rem] text-[#bbab8b] tracking-[0.5px] mt-4">
+                <?php echo esc_html( $gal_quote_attr ); ?>
+            </p>
+            <?php endif; ?>
+        </div>
+        <?php endif; ?>
+
     </div>
-    <?php endif; ?>
+
+    <!-- Mobile: stacked images + quote -->
+    <div class="lg:hidden flex flex-col gap-4 px-6">
+        <?php foreach ( $gal_rows as $row ) :
+            if ( empty( $row['image'] ) ) continue;
+            $img = $row['image'];
+        ?>
+        <div class="overflow-hidden rounded-xl" style="aspect-ratio:4/3;">
+            <img src="<?php echo esc_url( $img['sizes']['large'] ?? $img['url'] ); ?>"
+                 alt="<?php echo esc_attr( $img['alt'] ); ?>"
+                 class="w-full h-full object-cover">
+        </div>
+        <?php endforeach; ?>
+
+        <?php if ( $gal_quote ) : ?>
+        <div class="text-center py-8">
+            <p class="font-heading text-[#bcac8e] text-[3rem] leading-none mb-4">"</p>
+            <p class="font-heading text-[1.125rem] text-black leading-[1.7] tracking-[0.5px]">
+                <?php echo esc_html( $gal_quote ); ?>
+            </p>
+            <?php if ( $gal_quote_attr ) : ?>
+            <p class="font-body text-[0.875rem] text-[#bbab8b] tracking-[0.5px] mt-4">
+                <?php echo esc_html( $gal_quote_attr ); ?>
+            </p>
+            <?php endif; ?>
+        </div>
+        <?php endif; ?>
+    </div>
 
     <!-- Get in touch link -->
     <div class="text-center mt-12 px-6">
