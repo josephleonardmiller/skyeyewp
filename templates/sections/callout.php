@@ -36,7 +36,7 @@ $ireland_url = SKYEYE_URI . '/assets/images/irelandalt.png';
                     <img src="<?php echo esc_url( $img1 ); ?>" alt="" class="w-full h-full object-cover">
                 </div>
                 <?php // Spinning badge: top-right corner of Image 1 ?>
-                <div class="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 opacity-0 animate-[spin_15s_linear_infinite]"
+                <div class="hidden lg:block absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 opacity-0 animate-[spin_15s_linear_infinite]"
                      data-callout-badge
                      style="width:165px;height:165px;">
                     <img src="<?php echo esc_url( $badge_url ); ?>" alt="Made in Ireland" class="w-full h-full">
