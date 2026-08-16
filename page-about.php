@@ -240,7 +240,6 @@ $portfolio_url = get_post_type_archive_link( 'portfolio' ) ?: '/portfolio';
 <!-- ── Get In Touch ───────────────────────────────────────────────────────── -->
 <section class="relative overflow-hidden" style="background-color:<?php echo esc_attr( $cta_bg ?: '#000000' ); ?>;">
 
-
     <div class="relative z-10 px-6 lg:px-[8.5%] py-24 lg:py-32">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-[7%] items-start">
 
@@ -252,7 +251,7 @@ $portfolio_url = get_post_type_archive_link( 'portfolio' ) ?: '/portfolio';
             </div>
 
             <!-- Right: Gravity Form -->
-            <div class="about-contact-form">
+            <div class="about-contact-form" data-form-section>
                 <?php if ( function_exists( 'gravity_form' ) ) : ?>
                     <?php gravity_form( $form_id, false, false, false, null, true ); ?>
                 <?php else : ?>
