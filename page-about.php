@@ -20,6 +20,7 @@ $gal_rows       = get_field( 'about_gallery' ) ?: [];
 $gal_center     = $gal_rows[0]['image'] ?? null;
 $gal_left       = $gal_rows[1]['image'] ?? null;
 $gal_right      = $gal_rows[2]['image'] ?? null;
+$gal_extra      = array_slice( array_column( $gal_rows, 'image' ), 3 );
 $gal_cta        = get_field( 'about_gal_cta' )       ?: 'Get in touch ↗';
 $gal_cta_url    = get_field( 'about_gal_cta_url' );
 $s3_heading     = get_field( 'about_s3_heading' )    ?: 'Aerial Cinematography';
@@ -181,6 +182,19 @@ $portfolio_url = get_post_type_archive_link( 'portfolio' ) ?: '/portfolio';
         </div>
         <?php endif; ?>
     </div>
+
+    <!-- Extra images (4–6): 3-column row -->
+    <?php if ( $gal_extra ) : ?>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4 px-6 lg:px-[8.5%]">
+        <?php foreach ( $gal_extra as $img ) : ?>
+        <div class="overflow-hidden rounded-xl" style="aspect-ratio:3/2;">
+            <img src="<?php echo esc_url( $img['sizes']['large'] ?? $img['url'] ); ?>"
+                 alt="<?php echo esc_attr( $img['alt'] ); ?>"
+                 class="w-full h-full object-cover">
+        </div>
+        <?php endforeach; ?>
+    </div>
+    <?php endif; ?>
 
     <!-- Get in touch link -->
     <div class="text-center mt-12 px-6">

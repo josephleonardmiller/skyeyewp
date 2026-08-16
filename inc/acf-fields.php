@@ -421,9 +421,9 @@ function skyeye_register_acf_fields() {
                 'label'        => 'Gallery Images',
                 'name'         => 'about_gallery',
                 'type'         => 'repeater',
-                'instructions' => 'Add up to 3 images. Image 1 = large centre, Image 2 = left portrait, Image 3 = right portrait.',
+                'instructions' => 'Images 1–3: large centre, left portrait, right portrait. Images 4–6: shown as a 3-column row below.',
                 'min'          => 0,
-                'max'          => 3,
+                'max'          => 6,
                 'layout'       => 'block',
                 'button_label' => 'Add Image',
                 'sub_fields'   => [
