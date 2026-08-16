@@ -416,9 +416,20 @@ function skyeye_register_acf_fields() {
             [ 'key' => 'field_about_s2_button_url', 'label' => 'Section 2 Button URL',   'name' => 'about_s2_button_url', 'type' => 'url',  'instructions' => 'Leave blank to use the Contact page URL.' ],
 
             // Gallery break
-            [ 'key' => 'field_about_gallery_center', 'label' => 'Gallery — Centre Image', 'name' => 'about_gallery_center', 'type' => 'image', 'return_format' => 'array', 'preview_size' => 'medium' ],
-            [ 'key' => 'field_about_gallery_left',   'label' => 'Gallery — Left Portrait',  'name' => 'about_gallery_left',   'type' => 'image', 'return_format' => 'array', 'preview_size' => 'medium' ],
-            [ 'key' => 'field_about_gallery_right',  'label' => 'Gallery — Right Portrait', 'name' => 'about_gallery_right',  'type' => 'image', 'return_format' => 'array', 'preview_size' => 'medium' ],
+            [
+                'key'          => 'field_about_gallery',
+                'label'        => 'Gallery Images',
+                'name'         => 'about_gallery',
+                'type'         => 'repeater',
+                'instructions' => 'Add up to 3 images. Image 1 = large centre, Image 2 = left portrait, Image 3 = right portrait.',
+                'min'          => 0,
+                'max'          => 3,
+                'layout'       => 'block',
+                'button_label' => 'Add Image',
+                'sub_fields'   => [
+                    [ 'key' => 'field_about_gallery_img', 'label' => 'Image', 'name' => 'image', 'type' => 'image', 'return_format' => 'array', 'preview_size' => 'medium' ],
+                ],
+            ],
             [ 'key' => 'field_about_gal_cta',     'label' => 'Gallery — CTA Link Label', 'name' => 'about_gal_cta',     'type' => 'text', 'default_value' => 'Get in touch ↗' ],
             [ 'key' => 'field_about_gal_cta_url', 'label' => 'Gallery — CTA Link URL',   'name' => 'about_gal_cta_url', 'type' => 'url',  'instructions' => 'Leave blank to use the Contact page URL.' ],
 
