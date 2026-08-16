@@ -43,7 +43,7 @@ $portfolio_url = get_post_type_archive_link( 'portfolio' ) ?: '/portfolio';
 <!-- ── Hero ─────────────────────────────────────────────────────────────── -->
 <section class="bg-black text-center px-6 pt-40 lg:pt-48 pb-10 lg:pb-20">
     <div class="container mx-auto">
-        <h1 class="font-heading text-[2.25rem] lg:text-[4rem] text-[#f8f5ef] leading-tight mb-2" style="letter-spacing:-2px;">
+        <h1 class="font-heading text-[2.25rem] lg:text-[4rem] text-[#f8f5ef] leading-tight mb-2 lg:mb-8" style="letter-spacing:-2px;">
             <?php the_title(); ?>
         </h1>
         <?php if ( $hero_subtitle ) : ?>
