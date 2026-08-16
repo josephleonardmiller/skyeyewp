@@ -23,6 +23,9 @@ $gal_right      = $gal_rows[2]['image'] ?? null;
 $gal_extra      = array_slice( array_column( $gal_rows, 'image' ), 3 );
 $gal_cta        = get_field( 'about_gal_cta' )       ?: 'Get in touch ↗';
 $gal_cta_url    = get_field( 'about_gal_cta_url' );
+$testimonial_post = get_field( 'about_testimonial_post' );
+$gal_quote      = $testimonial_post ? get_field( 'quote', $testimonial_post->ID ) : get_field( 'about_quote' );
+$gal_quote_attr = $testimonial_post ? get_field( 'quote_attribution', $testimonial_post->ID ) : get_field( 'about_quote_attribution' );
 $s3_heading     = get_field( 'about_s3_heading' )    ?: 'Aerial Cinematography';
 $s3_body        = get_field( 'about_s3_body' );
 $s3_image       = get_field( 'about_s3_image' );
@@ -119,7 +122,7 @@ $portfolio_url = get_post_type_archive_link( 'portfolio' ) ?: '/portfolio';
     </div>
 </section>
 
-<?php if ( $gal_center || $gal_left || $gal_right ) : ?>
+<?php if ( $gal_rows || $gal_quote ) : ?>
 <!-- ── Gallery break ──────────────────────────────────────────────────────── -->
 <section class="bg-brand-100 pb-20 lg:pb-24 overflow-hidden">
 
@@ -182,6 +185,21 @@ $portfolio_url = get_post_type_archive_link( 'portfolio' ) ?: '/portfolio';
         </div>
         <?php endif; ?>
     </div>
+
+    <!-- Testimonial quote -->
+    <?php if ( $gal_quote ) : ?>
+    <div class="max-w-[700px] mx-auto py-16 lg:py-20 text-center px-6">
+        <p class="font-heading text-[#bcac8e] text-[3rem] leading-none mb-6">"</p>
+        <p class="font-heading text-[1.125rem] lg:text-[1.5rem] text-black leading-[1.7] lg:leading-[46px] tracking-[0.5px]">
+            <?php echo esc_html( $gal_quote ); ?>
+        </p>
+        <?php if ( $gal_quote_attr ) : ?>
+        <p class="font-body text-[0.875rem] text-[#bbab8b] tracking-[0.5px] mt-5">
+            <?php echo esc_html( $gal_quote_attr ); ?>
+        </p>
+        <?php endif; ?>
+    </div>
+    <?php endif; ?>
 
     <!-- Extra images (4–6): 3-column row -->
     <?php if ( $gal_extra ) : ?>
