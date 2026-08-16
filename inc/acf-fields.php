@@ -405,25 +405,29 @@ function skyeye_register_acf_fields() {
             [ 'key' => 'field_about_s1_heading', 'label' => 'Section 1 Heading', 'name' => 'about_s1_heading', 'type' => 'text', 'default_value' => 'About Skyeye' ],
             [ 'key' => 'field_about_s1_body', 'label' => 'Section 1 Body', 'name' => 'about_s1_body', 'type' => 'textarea', 'rows' => 5, 'default_value' => "Sky Eye Wedding Films is a wedding cinematography service built on one simple belief: real moments, honestly captured, make the most lasting films. Based in Ireland and shooting across Ireland and abroad, Sky Eye has spent years documenting weddings — not just the big set pieces, but the quiet glances, the nervous laughs, the tears nobody planned for. The kind of details that make your story yours." ],
             [ 'key' => 'field_about_s1_image', 'label' => 'Section 1 Image', 'name' => 'about_s1_image', 'type' => 'image', 'return_format' => 'array', 'preview_size' => 'medium' ],
-            [ 'key' => 'field_about_s1_button', 'label' => 'Section 1 Button Label', 'name' => 'about_s1_button', 'type' => 'text', 'default_value' => 'View portfolio' ],
+            [ 'key' => 'field_about_s1_button',     'label' => 'Section 1 Button Label', 'name' => 'about_s1_button',     'type' => 'text', 'default_value' => 'View portfolio' ],
+            [ 'key' => 'field_about_s1_button_url', 'label' => 'Section 1 Button URL',   'name' => 'about_s1_button_url', 'type' => 'url',  'instructions' => 'Leave blank to use the Portfolio archive URL.' ],
 
             // Approach section
             [ 'key' => 'field_about_s2_heading', 'label' => 'Section 2 Heading', 'name' => 'about_s2_heading', 'type' => 'text', 'default_value' => 'Approach' ],
             [ 'key' => 'field_about_s2_body', 'label' => 'Section 2 Body', 'name' => 'about_s2_body', 'type' => 'textarea', 'rows' => 5, 'default_value' => "Every wedding is different, and so is every film we make. We take the time to get to know you — your story, your style, your day — so that when we're on the ground, we're invisible where we need to be and present for the moments that matter. The result is a film that feels like you." ],
             [ 'key' => 'field_about_s2_image', 'label' => 'Section 2 Image', 'name' => 'about_s2_image', 'type' => 'image', 'return_format' => 'array', 'preview_size' => 'medium' ],
-            [ 'key' => 'field_about_s2_button', 'label' => 'Section 2 Button Label', 'name' => 'about_s2_button', 'type' => 'text', 'default_value' => 'Get in touch' ],
+            [ 'key' => 'field_about_s2_button',     'label' => 'Section 2 Button Label', 'name' => 'about_s2_button',     'type' => 'text', 'default_value' => 'Get in touch' ],
+            [ 'key' => 'field_about_s2_button_url', 'label' => 'Section 2 Button URL',   'name' => 'about_s2_button_url', 'type' => 'url',  'instructions' => 'Leave blank to use the Contact page URL.' ],
 
             // Gallery break
             [ 'key' => 'field_about_gallery_center', 'label' => 'Gallery — Centre Image', 'name' => 'about_gallery_center', 'type' => 'image', 'return_format' => 'array', 'preview_size' => 'medium' ],
             [ 'key' => 'field_about_gallery_left',   'label' => 'Gallery — Left Portrait',  'name' => 'about_gallery_left',   'type' => 'image', 'return_format' => 'array', 'preview_size' => 'medium' ],
             [ 'key' => 'field_about_gallery_right',  'label' => 'Gallery — Right Portrait', 'name' => 'about_gallery_right',  'type' => 'image', 'return_format' => 'array', 'preview_size' => 'medium' ],
-            [ 'key' => 'field_about_gal_cta', 'label' => 'Gallery — CTA Link Label', 'name' => 'about_gal_cta', 'type' => 'text', 'default_value' => 'Get in touch ↗' ],
+            [ 'key' => 'field_about_gal_cta',     'label' => 'Gallery — CTA Link Label', 'name' => 'about_gal_cta',     'type' => 'text', 'default_value' => 'Get in touch ↗' ],
+            [ 'key' => 'field_about_gal_cta_url', 'label' => 'Gallery — CTA Link URL',   'name' => 'about_gal_cta_url', 'type' => 'url',  'instructions' => 'Leave blank to use the Contact page URL.' ],
 
             // Aerial Cinematography section
             [ 'key' => 'field_about_s3_heading', 'label' => 'Section 3 Heading', 'name' => 'about_s3_heading', 'type' => 'text', 'default_value' => 'Aerial Cinematography' ],
             [ 'key' => 'field_about_s3_body', 'label' => 'Section 3 Body', 'name' => 'about_s3_body', 'type' => 'textarea', 'rows' => 5, 'default_value' => "Sky Eye started with a drone. A love of technology and a curiosity about aerial perspectives led to professional drone operator training — and the discovery that the right aerial shot can completely transform how a wedding story is told. It's a dimension most videographers can't offer, and it's been part of the Sky Eye signature ever since. What began as a passion for flight grew into a full wedding film service, built on craft, creativity, and a genuine belief that your day is worth telling beautifully." ],
             [ 'key' => 'field_about_s3_image', 'label' => 'Section 3 Image', 'name' => 'about_s3_image', 'type' => 'image', 'return_format' => 'array', 'preview_size' => 'medium' ],
-            [ 'key' => 'field_about_s3_button', 'label' => 'Section 3 Button Label', 'name' => 'about_s3_button', 'type' => 'text', 'default_value' => 'Get in touch' ],
+            [ 'key' => 'field_about_s3_button',     'label' => 'Section 3 Button Label', 'name' => 'about_s3_button',     'type' => 'text', 'default_value' => 'Get in touch' ],
+            [ 'key' => 'field_about_s3_button_url', 'label' => 'Section 3 Button URL',   'name' => 'about_s3_button_url', 'type' => 'url',  'instructions' => 'Leave blank to use the Contact page URL.' ],
 
             // Get In Touch
             [ 'key' => 'field_about_cta_bg', 'label' => 'Get In Touch — Background Image', 'name' => 'about_cta_bg', 'type' => 'image', 'return_format' => 'array', 'preview_size' => 'medium', 'instructions' => 'Dark photo displayed behind the Get In Touch section.' ],

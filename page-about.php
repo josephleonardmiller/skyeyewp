@@ -10,18 +10,22 @@ $s1_heading     = get_field( 'about_s1_heading' )    ?: 'About Skyeye';
 $s1_body        = get_field( 'about_s1_body' );
 $s1_image       = get_field( 'about_s1_image' );
 $s1_button      = get_field( 'about_s1_button' )     ?: 'View portfolio';
+$s1_button_url  = get_field( 'about_s1_button_url' );
 $s2_heading     = get_field( 'about_s2_heading' )    ?: 'Approach';
 $s2_body        = get_field( 'about_s2_body' );
 $s2_image       = get_field( 'about_s2_image' );
 $s2_button      = get_field( 'about_s2_button' )     ?: 'Get in touch';
+$s2_button_url  = get_field( 'about_s2_button_url' );
 $gal_center     = get_field( 'about_gallery_center' );
 $gal_left       = get_field( 'about_gallery_left' );
 $gal_right      = get_field( 'about_gallery_right' );
 $gal_cta        = get_field( 'about_gal_cta' )       ?: 'Get in touch ↗';
+$gal_cta_url    = get_field( 'about_gal_cta_url' );
 $s3_heading     = get_field( 'about_s3_heading' )    ?: 'Aerial Cinematography';
 $s3_body        = get_field( 'about_s3_body' );
 $s3_image       = get_field( 'about_s3_image' );
 $s3_button      = get_field( 'about_s3_button' )     ?: 'Get in touch';
+$s3_button_url  = get_field( 'about_s3_button_url' );
 $cta_bg         = get_field( 'about_cta_bg' );
 $form_id        = (int) ( get_field( 'about_form_id' ) ?: 1 );
 
@@ -70,7 +74,7 @@ $portfolio_url = get_post_type_archive_link( 'portfolio' ) ?: '/portfolio';
                 <?php echo nl2br( esc_html( $s1_body ) ); ?>
             </p>
             <?php endif; ?>
-            <a href="<?php echo esc_url( $portfolio_url ); ?>"
+            <a href="<?php echo esc_url( $s1_button_url ?: $portfolio_url ); ?>"
                class="font-body text-[1.125rem] text-white bg-black rounded-[50px] px-10 py-3.5 inline-block hover:bg-brand-400 transition-colors duration-300">
                 <?php echo esc_html( $s1_button ); ?>
             </a>
@@ -93,7 +97,7 @@ $portfolio_url = get_post_type_archive_link( 'portfolio' ) ?: '/portfolio';
                 <?php echo nl2br( esc_html( $s2_body ) ); ?>
             </p>
             <?php endif; ?>
-            <a href="<?php echo esc_url( $contact_url ); ?>"
+            <a href="<?php echo esc_url( $s2_button_url ?: $contact_url ); ?>"
                class="font-body text-[1.125rem] text-white bg-black rounded-[50px] px-10 py-3.5 inline-block hover:bg-brand-400 transition-colors duration-300">
                 <?php echo esc_html( $s2_button ); ?>
             </a>
@@ -179,7 +183,7 @@ $portfolio_url = get_post_type_archive_link( 'portfolio' ) ?: '/portfolio';
 
     <!-- Get in touch link -->
     <div class="text-center mt-12 px-6">
-        <a href="<?php echo esc_url( $contact_url ); ?>"
+        <a href="<?php echo esc_url( $gal_cta_url ?: $contact_url ); ?>"
            class="font-body text-[1.125rem] text-black border-b border-black/30 pb-0.5 hover:border-black transition-colors duration-300">
             <?php echo esc_html( $gal_cta ); ?>
         </a>
@@ -213,7 +217,7 @@ $portfolio_url = get_post_type_archive_link( 'portfolio' ) ?: '/portfolio';
                 <?php echo nl2br( esc_html( $s3_body ) ); ?>
             </p>
             <?php endif; ?>
-            <a href="<?php echo esc_url( $contact_url ); ?>"
+            <a href="<?php echo esc_url( $s3_button_url ?: $contact_url ); ?>"
                class="font-body text-[1.125rem] text-white bg-black rounded-[50px] px-10 py-3.5 inline-block hover:bg-brand-400 transition-colors duration-300">
                 <?php echo esc_html( $s3_button ); ?>
             </a>
