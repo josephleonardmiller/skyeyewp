@@ -156,13 +156,13 @@ $portfolio_url = get_post_type_archive_link( 'portfolio' ) ?: '/portfolio';
 
         <!-- Quote: centred over the composition -->
         <?php if ( $gal_quote ) : ?>
-        <div class="absolute text-center" style="left:33%;right:33%;top:50%;transform:translateY(-50%);">
-            <p class="font-heading text-[#bcac8e] text-[3rem] leading-none mb-4">"</p>
-            <p class="font-heading text-[1.25rem] text-black leading-[1.65] tracking-[0.5px]">
+        <div class="absolute text-center" style="left:21%;right:21%;top:50%;transform:translateY(-50%);">
+            <p class="font-heading text-[#bcac8e] text-[3rem] leading-none mb-5">"</p>
+            <p class="font-heading text-[1.5rem] text-black leading-[1.667] tracking-[0.5px]">
                 <?php echo esc_html( $gal_quote ); ?>
             </p>
             <?php if ( $gal_quote_attr ) : ?>
-            <p class="font-body text-[0.875rem] text-[#bbab8b] tracking-[0.5px] mt-4">
+            <p class="font-body text-[1.125rem] text-[#bbab8b] tracking-[0.5px] mt-5">
                 <?php echo esc_html( $gal_quote_attr ); ?>
             </p>
             <?php endif; ?>
