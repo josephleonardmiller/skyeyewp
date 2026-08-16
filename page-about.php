@@ -31,7 +31,7 @@ $s3_body        = get_field( 'about_s3_body' );
 $s3_image       = get_field( 'about_s3_image' );
 $s3_button      = get_field( 'about_s3_button' )     ?: 'Get in touch';
 $s3_button_url  = get_field( 'about_s3_button_url' );
-$cta_bg         = get_field( 'about_cta_bg' );
+$cta_bg         = get_field( 'about_cta_bg' ) ?: '#000000';
 $form_id        = (int) ( get_field( 'about_form_id' ) ?: 1 );
 
 if ( have_posts() ) { while ( have_posts() ) { the_post(); } }
@@ -238,15 +238,8 @@ $portfolio_url = get_post_type_archive_link( 'portfolio' ) ?: '/portfolio';
 </section>
 
 <!-- ── Get In Touch ───────────────────────────────────────────────────────── -->
-<section class="relative bg-black overflow-hidden">
+<section class="relative overflow-hidden" style="background-color:<?php echo esc_attr( $cta_bg ?: '#000000' ); ?>;">
 
-    <?php if ( $cta_bg ) : ?>
-    <div class="absolute inset-0">
-        <img src="<?php echo esc_url( $cta_bg['sizes']['large'] ?? $cta_bg['url'] ); ?>"
-             alt=""
-             class="w-full h-full object-cover opacity-40">
-    </div>
-    <?php endif; ?>
 
     <div class="relative z-10 px-6 lg:px-[8.5%] py-24 lg:py-32">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-[7%] items-start">

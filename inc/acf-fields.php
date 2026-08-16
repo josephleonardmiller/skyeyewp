@@ -455,7 +455,7 @@ function skyeye_register_acf_fields() {
             [ 'key' => 'field_about_s3_button_url', 'label' => 'Section 3 Button URL',   'name' => 'about_s3_button_url', 'type' => 'url',  'instructions' => 'Leave blank to use the Contact page URL.' ],
 
             // Get In Touch
-            [ 'key' => 'field_about_cta_bg', 'label' => 'Get In Touch — Background Image', 'name' => 'about_cta_bg', 'type' => 'image', 'return_format' => 'array', 'preview_size' => 'medium', 'instructions' => 'Dark photo displayed behind the Get In Touch section.' ],
+            [ 'key' => 'field_about_cta_bg', 'label' => 'Get In Touch — Background Colour', 'name' => 'about_cta_bg', 'type' => 'color_picker', 'default_value' => '#000000', 'enable_opacity' => 0 ],
             [ 'key' => 'field_about_form_id', 'label' => 'Get In Touch — Gravity Form ID', 'name' => 'about_form_id', 'type' => 'number', 'min' => 1, 'step' => 1, 'default_value' => 1 ],
         ],
         'location' => [ [ [
