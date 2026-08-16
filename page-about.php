@@ -41,13 +41,13 @@ $portfolio_url = get_post_type_archive_link( 'portfolio' ) ?: '/portfolio';
 ?>
 
 <!-- ── Hero ─────────────────────────────────────────────────────────────── -->
-<section class="bg-black text-center px-6 pt-40 lg:pt-48 pb-10 lg:pb-20">
+<section class="bg-black text-center px-6 pt-40 lg:pt-48 pb-8 lg:pb-20">
     <div class="container mx-auto">
         <h1 class="font-heading text-[2.25rem] lg:text-[4rem] text-[#f8f5ef] leading-tight mb-2 lg:mb-8" style="letter-spacing:-2px;">
             <?php the_title(); ?>
         </h1>
         <?php if ( $hero_subtitle ) : ?>
-        <p class="font-body text-[1.125rem] text-white max-w-[600px] mx-auto leading-snug">
+        <p class="font-body text-base lg:text-[1.125rem] font-light text-white max-w-[600px] mx-auto leading-[1.5]">
             <?php echo esc_html( $hero_subtitle ); ?>
         </p>
         <?php endif; ?>
@@ -55,7 +55,7 @@ $portfolio_url = get_post_type_archive_link( 'portfolio' ) ?: '/portfolio';
 </section>
 
 <!-- ── About Skyeye — image left, text right ─────────────────────────────── -->
-<section class="bg-brand-100 px-6 lg:px-[8.5%] pt-20 lg:pt-28 pb-20 lg:pb-24">
+<section class="bg-brand-100 px-6 lg:px-[8.5%] pt-10 lg:pt-28 pb-20 lg:pb-24">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-y-10 gap-x-[7%] items-start">
 
         <!-- Image -->
@@ -75,7 +75,7 @@ $portfolio_url = get_post_type_archive_link( 'portfolio' ) ?: '/portfolio';
                 <?php echo esc_html( $s1_heading ); ?>
             </h2>
             <?php if ( $s1_body ) : ?>
-            <p class="font-body text-[1.125rem] font-light text-black leading-[1.7] mb-10">
+            <p class="font-body text-base lg:text-[1.125rem] font-light text-black leading-[1.5] lg:leading-[1.7] mb-10">
                 <?php echo nl2br( esc_html( $s1_body ) ); ?>
             </p>
             <?php endif; ?>
@@ -98,7 +98,7 @@ $portfolio_url = get_post_type_archive_link( 'portfolio' ) ?: '/portfolio';
                 <?php echo esc_html( $s2_heading ); ?>
             </h2>
             <?php if ( $s2_body ) : ?>
-            <p class="font-body text-[1.125rem] font-light text-black leading-[1.7] mb-10">
+            <p class="font-body text-base lg:text-[1.125rem] font-light text-black leading-[1.5] lg:leading-[1.7] mb-10">
                 <?php echo nl2br( esc_html( $s2_body ) ); ?>
             </p>
             <?php endif; ?>
@@ -224,7 +224,7 @@ $portfolio_url = get_post_type_archive_link( 'portfolio' ) ?: '/portfolio';
                 <?php echo esc_html( $s3_heading ); ?>
             </h2>
             <?php if ( $s3_body ) : ?>
-            <p class="font-body text-[1.125rem] font-light text-black leading-[1.7] mb-10">
+            <p class="font-body text-base lg:text-[1.125rem] font-light text-black leading-[1.5] lg:leading-[1.7] mb-10">
                 <?php echo nl2br( esc_html( $s3_body ) ); ?>
             </p>
             <?php endif; ?>
