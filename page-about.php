@@ -129,17 +129,17 @@ $portfolio_url = get_post_type_archive_link( 'portfolio' ) ?: '/portfolio';
     <?php
     // Slot positions (desktop scattered layout): left, top, width, aspect-ratio
     $slots = [
-        [ 'left:17%',    'top:4%',    'width:28%', '3/2' ],  // 0: upper-left landscape
-        [ 'right:16%',   'top:0%',    'width:28%', '3/2' ],  // 1: upper-right landscape
-        [ 'right:-2%',   'top:1%',    'width:14%', '2/3' ],  // 2: far-right portrait
-        [ 'left:-2%',    'top:30%',   'width:14%', '2/3' ],  // 3: far-left portrait
-        [ 'left:20%',    'bottom:5%', 'width:26%', '3/2' ],  // 4: lower-centre landscape
-        [ 'right:5%',    'bottom:8%', 'width:13%', '2/3' ],  // 5: lower-right portrait
+        [ 'left:17%',    'top:4%',    'width:22%', '3/2' ],  // 0: upper-left landscape
+        [ 'right:14%',   'top:0%',    'width:22%', '3/2' ],  // 1: upper-right landscape
+        [ 'right:-2%',   'top:27%',   'width:14%', '2/3' ],  // 2: far-right portrait
+        [ 'left:-2%',    'top:38%',   'width:14%', '2/3' ],  // 3: far-left portrait
+        [ 'left:18%',    'bottom:4%', 'width:24%', '3/2' ],  // 4: lower-centre landscape
+        [ 'right:6%',    'bottom:6%', 'width:13%', '2/3' ],  // 5: lower-right portrait
     ];
     ?>
 
     <!-- Desktop: scattered absolute layout -->
-    <div class="hidden lg:block relative" style="padding-bottom:58%;">
+    <div class="hidden lg:block relative" style="padding-bottom:72%;">
 
         <?php foreach ( $gal_rows as $i => $row ) :
             if ( ! isset( $slots[$i] ) || empty( $row['image'] ) ) continue;
@@ -158,7 +158,7 @@ $portfolio_url = get_post_type_archive_link( 'portfolio' ) ?: '/portfolio';
         <?php if ( $gal_quote ) : ?>
         <div class="absolute text-center" style="left:21%;right:21%;top:50%;transform:translateY(-50%);">
             <p class="font-heading text-[#bcac8e] text-[3rem] leading-none mb-5">"</p>
-            <p class="font-heading text-[1.5rem] text-black leading-[1.667] tracking-[0.5px]">
+            <p class="font-heading text-[1.25rem] text-black leading-[1.667] tracking-[0.5px]">
                 <?php echo esc_html( $gal_quote ); ?>
             </p>
             <?php if ( $gal_quote_attr ) : ?>
