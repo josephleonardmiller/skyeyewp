@@ -199,13 +199,6 @@ $portfolio_url = get_post_type_archive_link( 'portfolio' ) ?: '/portfolio';
         <?php endif; ?>
     </div>
 
-    <!-- Get in touch link -->
-    <div class="text-center mt-12 px-6">
-        <a href="<?php echo esc_url( $gal_cta_url ?: $contact_url ); ?>"
-           class="font-body text-[1.125rem] text-black border-b border-black/30 pb-0.5 hover:border-black transition-colors duration-300">
-            <?php echo esc_html( $gal_cta ); ?>
-        </a>
-    </div>
 
 </section>
 <?php endif; ?>
