@@ -11,7 +11,7 @@ $video_url   = get_sub_field( 'background_video_url' ) ?: '';
 
     <?php if ( $video_url ) : ?>
     <div class="absolute inset-0 z-0" data-hero-parallax>
-        <video class="absolute inset-0 w-full h-full object-cover object-center" autoplay muted loop playsinline preload="metadata">
+        <video class="absolute inset-0 w-full h-full object-cover object-center" autoplay muted loop playsinline preload="auto" data-hero-video>
             <source src="<?php echo esc_url( $video_url ); ?>">
         </video>
     </div>

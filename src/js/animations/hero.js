@@ -2,6 +2,16 @@ export function initHero() {
   const section = document.querySelector('[data-hero]')
   if (!section) return
 
+  // iOS fallback: nudge video play on first touch if autoplay was blocked
+  const heroVideo = section.querySelector('[data-hero-video]')
+  if (heroVideo) {
+    const tryPlay = () => {
+      if (heroVideo.paused) heroVideo.play().catch(() => {})
+      document.removeEventListener('touchstart', tryPlay, { once: true })
+    }
+    document.addEventListener('touchstart', tryPlay, { once: true })
+  }
+
   const tl = gsap.timeline({ delay: 0.1 })
 
   // Overlays start at width:0% in HTML so they're already invisible — skip wipe, go straight to text
