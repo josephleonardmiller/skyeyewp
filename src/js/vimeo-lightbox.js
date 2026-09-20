@@ -8,15 +8,11 @@ function loadVimeoSDK() {
   })
 }
 
-export function initVimeoLightbox() {
-  const overlay = document.getElementById('portfolio-play-overlay')
+function bindOverlay(overlayId, iframeId, sdkReady) {
+  const overlay = document.getElementById(overlayId)
   if (!overlay) return
-
-  const iframe = document.getElementById('portfolio-vimeo')
+  const iframe = document.getElementById(iframeId)
   if (!iframe) return
-
-  // Start loading SDK immediately — ready before user clicks
-  const sdkReady = loadVimeoSDK()
 
   overlay.addEventListener('click', async () => {
     overlay.style.transition = 'opacity 0.4s ease'
@@ -27,4 +23,14 @@ export function initVimeoLightbox() {
     const player = new window.Vimeo.Player(iframe)
     player.play()
   }, { once: true })
+}
+
+export function initVimeoLightbox() {
+  const hasAny = document.getElementById('portfolio-play-overlay') ||
+                 document.getElementById('portfolio-teaser-play-overlay')
+  if (!hasAny) return
+
+  const sdkReady = loadVimeoSDK()
+  bindOverlay('portfolio-play-overlay',        'portfolio-vimeo',        sdkReady)
+  bindOverlay('portfolio-teaser-play-overlay', 'portfolio-teaser-vimeo', sdkReady)
 }

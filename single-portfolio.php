@@ -13,6 +13,10 @@ $text_2             = get_field( 'text_2' );
 $text_3             = get_field( 'text_3' );
 $quote              = get_field( 'quote' );
 $quote_attribution  = get_field( 'quote_attribution' );
+$teaser_url         = get_field( 'teaser_url' );
+$teaser_thumbnail   = get_field( 'teaser_thumbnail' );
+preg_match( '/vimeo\.com\/(\d+)/', $teaser_url ?? '', $teaser_match );
+$teaser_vimeo_id    = $teaser_match[1] ?? null;
 
 $related = new WP_Query( [
     'post_type'      => 'portfolio',
@@ -165,14 +169,38 @@ $has_hero  = $vimeo_id || $video_thumbnail || has_post_thumbnail();
     </div>
     <?php endif; ?>
 
-    <!-- Extra images (6+): 2-column staggered -->
-    <?php if ( $extra ) :
+    <?php if ( $teaser_vimeo_id ) : ?>
+    <!-- Teaser video — replaces the last two gallery images -->
+    <?php $teaser_thumb = $teaser_thumbnail ?: $video_thumbnail; ?>
+    <div class="mt-16 lg:mt-20">
+        <div class="relative overflow-hidden rounded-xl" style="aspect-ratio:1414/778;">
+            <iframe id="portfolio-teaser-vimeo"
+                src="https://player.vimeo.com/video/<?php echo esc_attr( $teaser_vimeo_id ); ?>?title=0&byline=0&portrait=0&dnt=1"
+                style="position:absolute;inset:0;width:100%;height:100%;border:0;"
+                allow="autoplay; fullscreen; picture-in-picture"
+                allowfullscreen
+            ></iframe>
+            <div id="portfolio-teaser-play-overlay" class="group/play absolute inset-0 z-10 flex items-center justify-center cursor-pointer">
+                <?php if ( $teaser_thumb ) : ?>
+                <img src="<?php echo esc_url( $teaser_thumb['sizes']['large'] ?? $teaser_thumb['url'] ); ?>"
+                     alt="<?php echo esc_attr( $teaser_thumb['alt'] ); ?>"
+                     class="absolute inset-0 w-full h-full object-cover">
+                <?php endif; ?>
+                <div class="relative flex items-center justify-center rounded-full bg-[#bcac8e]/80 group-hover/play:bg-[#bcac8e] transition-colors duration-300 w-20 h-20 lg:w-[120px] lg:h-[120px]">
+                    <span class="font-heading text-white text-[1.25rem] leading-none tracking-[0.5px]">Play</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <?php elseif ( $extra ) :
         $left_extra = []; $right_extra = [];
         foreach ( $extra as $i => $img ) {
             if ( $i % 2 === 0 ) $right_extra[] = $img;
             else $left_extra[] = $img;
         }
     ?>
+    <!-- Extra images (6+): 2-column staggered -->
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-[8.5%] gap-y-6 lg:gap-y-0 mt-8 lg:mt-12">
         <div class="flex flex-col gap-8 lg:gap-12 mt-8 lg:mt-[118px]">
             <?php foreach ( $left_extra as $img ) : ?>
