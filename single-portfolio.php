@@ -72,8 +72,8 @@ $has_hero  = $vimeo_id || $video_thumbnail || has_post_thumbnail();
                  alt="<?php echo esc_attr( $video_thumbnail['alt'] ); ?>"
                  class="absolute inset-0 w-full h-full object-cover">
             <?php endif; ?>
-            <div class="relative flex items-center justify-center rounded-full bg-[#bcac8e]/80 group-hover/play:bg-[#bcac8e] transition-colors duration-300 w-20 h-20 lg:w-[120px] lg:h-[120px]">
-                <span class="font-heading text-white text-[1.25rem] leading-none tracking-[0.5px]">Play</span>
+            <div class="relative flex items-center justify-center rounded-full bg-[#bcac8e]/80 group-hover/play:bg-[#bcac8e] transition-colors duration-300 w-24 h-24 lg:w-[140px] lg:h-[140px]">
+                <span class="font-heading text-white text-[0.9rem] lg:text-[1.1rem] leading-snug tracking-[0.5px] text-center max-w-[70px] lg:max-w-[90px]">Play Highlight Reel</span>
             </div>
         </div>
         <?php elseif ( $video_thumbnail ) : ?>
@@ -186,8 +186,8 @@ $has_hero  = $vimeo_id || $video_thumbnail || has_post_thumbnail();
                      alt="<?php echo esc_attr( $teaser_thumb['alt'] ); ?>"
                      class="absolute inset-0 w-full h-full object-cover">
                 <?php endif; ?>
-                <div class="relative flex items-center justify-center rounded-full bg-[#bcac8e]/80 group-hover/play:bg-[#bcac8e] transition-colors duration-300 w-20 h-20 lg:w-[120px] lg:h-[120px]">
-                    <span class="font-heading text-white text-[1.25rem] leading-none tracking-[0.5px]">Play</span>
+                <div class="relative flex items-center justify-center rounded-full bg-[#bcac8e]/80 group-hover/play:bg-[#bcac8e] transition-colors duration-300 w-24 h-24 lg:w-[140px] lg:h-[140px]">
+                    <span class="font-heading text-white text-[0.9rem] lg:text-[1.1rem] leading-snug tracking-[0.5px] text-center max-w-[70px] lg:max-w-[90px]">Play Teaser Reel</span>
                 </div>
             </div>
         </div>
