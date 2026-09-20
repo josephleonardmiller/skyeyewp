@@ -43,6 +43,7 @@ $cloudinary_base = 'https://res.cloudinary.com/dbpg2xuhs/video/upload/q_auto,vc_
                 $video_id  = get_field( 'cloudinary_video_id', $item->ID );
                 $video_url = $video_id ? $cloudinary_base . $video_id . '.mp4' : '';
                 $thumb_url = get_the_post_thumbnail_url( $item->ID, 'large' );
+                $permalink = get_permalink( $item->ID );
                 $direction = ( $i % 2 === 0 ) ? 'left' : 'right';
                 $translate = $direction === 'left' ? '-20%' : '20%';
                 $mask_dir  = $direction === 'left' ? 'to right' : 'to left';
@@ -53,6 +54,7 @@ $cloudinary_base = 'https://res.cloudinary.com/dbpg2xuhs/video/upload/q_auto,vc_
                     class="work-item group relative block w-full cursor-none"
                     data-work-item
                     data-direction="<?php echo esc_attr( $direction ); ?>"
+                    data-url="<?php echo esc_url( $permalink ); ?>"
                 >
 
                     <!-- Image / video with mask reveal -->

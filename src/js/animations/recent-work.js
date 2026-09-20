@@ -53,6 +53,11 @@ export function initRecentWork() {
       },
     })
 
+    // Click — navigate to portfolio item
+    if (item.dataset.url) {
+      item.addEventListener('click', () => { window.location.href = item.dataset.url })
+    }
+
     // Hover — video slides in, thumbnail scales and pans slightly
     item.addEventListener('mouseenter', () => {
       if (videoWrap && video) {
