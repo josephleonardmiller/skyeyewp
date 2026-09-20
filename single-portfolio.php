@@ -187,7 +187,7 @@ $has_hero  = $vimeo_id || $video_thumbnail || has_post_thumbnail();
                      class="absolute inset-0 w-full h-full object-cover">
                 <?php endif; ?>
                 <div class="relative flex items-center justify-center rounded-full bg-[#bcac8e]/80 group-hover/play:bg-[#bcac8e] transition-colors duration-300 w-24 h-24 lg:w-[140px] lg:h-[140px]">
-                    <span class="font-heading text-white text-[0.9rem] lg:text-[1.1rem] leading-snug tracking-[0.5px] text-center max-w-[70px] lg:max-w-[90px]">Play Teaser Reel</span>
+                    <span class="font-heading text-white text-[0.9rem] lg:text-[1.1rem] leading-snug tracking-[0.5px] text-center max-w-[70px] lg:max-w-[90px]">Play Teaser Video</span>
                 </div>
             </div>
         </div>
