@@ -9,8 +9,8 @@ $sub     = get_sub_field( 'subheading' )     ?: 'We just need a few details';
         <div class="flex flex-wrap items-start">
 
             <!-- Left: heading + subheading -->
-            <div class="flex w-full md:w-1/2">
-                <div class="relative">
+            <div class="flex w-full md:w-1/2 justify-center md:justify-start">
+                <div class="relative text-center md:text-left">
                     <h2 class="mt-[0.1875rem] font-heading text-[3.25rem] md:text-[6.75rem] leading-normal tracking-[-2.5px] text-white">
                         <div class="relative overflow-hidden">
                             <div class="opacity-0 translate-y-full" data-form-heading>
@@ -25,7 +25,7 @@ $sub     = get_sub_field( 'subheading' )     ?: 'We just need a few details';
                     </h2>
                     <div class="relative mt-[0.625rem] md:absolute md:inset-x-0 md:top-full md:mt-0">
                         <div class="relative overflow-hidden">
-                            <p class="text-[1.125rem] text-white md:text-right opacity-0 translate-y-full" data-form-sub>
+                            <p class="text-[1.125rem] text-white text-center md:text-right opacity-0 translate-y-full" data-form-sub>
                                 <?php echo esc_html( $sub ); ?>
                             </p>
                         </div>
