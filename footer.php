@@ -7,8 +7,8 @@ $logo_alt      = $logo ? esc_attr( $logo['alt'] ) : 'Sky Eye Wedding Films';
 $company       = get_field( 'company_name', 'option' ) ?: 'Sky Eye Wedding Films';
 $footer_note   = get_field( 'footer_note', 'option' ) ?: 'Made in Ireland';
 $facebook_url  = get_field( 'social_facebook', 'option' );
-$twitter_url   = get_field( 'social_twitter', 'option' );
 $instagram_url = get_field( 'social_instagram', 'option' );
+$vimeo_url     = get_field( 'social_vimeo', 'option' );
 ?>
 
 <footer class="sticky bottom-0 bg-black text-white pt-[4.0625rem] pb-[3.125rem]" data-footer>
@@ -86,20 +86,6 @@ $instagram_url = get_field( 'social_instagram', 'option' );
                     </a>
                     <?php endif; ?>
 
-                    <?php if ( $twitter_url ) : ?>
-                    <a
-                        href="<?php echo esc_url( $twitter_url ); ?>"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="flex h-9 w-9 items-center justify-center rounded-full border border-white text-white hover:bg-white hover:text-black transition-all duration-300"
-                        aria-label="Twitter / X"
-                    >
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                        </svg>
-                    </a>
-                    <?php endif; ?>
-
                     <?php if ( $instagram_url ) : ?>
                     <a
                         href="<?php echo esc_url( $instagram_url ); ?>"
@@ -112,6 +98,20 @@ $instagram_url = get_field( 'social_instagram', 'option' );
                             <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
                             <circle cx="12" cy="12" r="4"/>
                             <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/>
+                        </svg>
+                    </a>
+                    <?php endif; ?>
+
+                    <?php if ( $vimeo_url ) : ?>
+                    <a
+                        href="<?php echo esc_url( $vimeo_url ); ?>"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="flex h-9 w-9 items-center justify-center rounded-full border border-white text-white hover:bg-white hover:text-black transition-all duration-300"
+                        aria-label="Vimeo"
+                    >
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path d="M23.977 6.416c-.105 2.338-1.739 5.543-4.894 9.609-3.268 4.247-6.026 6.37-8.29 6.37-1.409 0-2.578-1.294-3.553-3.881L5.322 13.4C4.603 10.812 3.834 9.518 3.01 9.518c-.179 0-.806.378-1.881 1.132L0 9.148c1.185-1.044 2.351-2.087 3.501-3.132C5.08 4.637 6.266 3.825 7.055 3.76c1.865-.18 3.013 1.098 3.45 3.829.465 2.98.788 4.83.971 5.453.537 2.44 1.124 3.654 1.765 3.654.498 0 1.246-.787 2.247-2.357 1-.568 1.57-2.522 1.707-2.928.15-.487.232-.967.232-1.438 0-1.152-.33-1.728-.987-1.728-.352 0-.714.08-1.083.241.72-2.354 2.09-3.498 4.113-3.43 1.502.045 2.21 1.019 2.507 2.96z"/>
                         </svg>
                     </a>
                     <?php endif; ?>
