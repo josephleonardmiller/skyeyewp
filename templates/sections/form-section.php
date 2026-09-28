@@ -2,7 +2,6 @@
 $line1   = get_sub_field( 'heading_line_1' ) ?: 'Get in';
 $line2   = get_sub_field( 'heading_line_2' ) ?: 'touch';
 $sub     = get_sub_field( 'subheading' )     ?: 'We just need a few details';
-$form_id = (int) get_sub_field( 'form_id' );
 ?>
 
 <section class="form-section bg-brand-200 py-[3.75rem] md:py-[8.125rem] overflow-hidden" data-form-section>
@@ -34,15 +33,17 @@ $form_id = (int) get_sub_field( 'form_id' );
                 </div>
             </div>
 
-            <!-- Right: Gravity Form -->
+            <!-- Right: Studio Ninja form -->
             <div class="mt-[1.875rem] w-full md:-mt-[0.9375rem] md:w-1/2 opacity-0 translate-y-8" data-form-col>
-                <?php if ( $form_id && function_exists( 'gravity_form' ) ) : ?>
-                    <?php gravity_form( $form_id, false, false, false, null, true ); ?>
-                <?php elseif ( ! function_exists( 'gravity_form' ) ) : ?>
-                    <p class="text-white/50 text-sm">Gravity Forms plugin is not active.</p>
-                <?php else : ?>
-                    <p class="text-white/50 text-sm">No form selected — add a Gravity Form ID in the page builder.</p>
-                <?php endif; ?>
+                <iframe height="782"
+                        style="min-width:100%;max-width:none;border:0;"
+                        id="sn-form-footer"
+                        src="https://app.studioninja.co/contactform/parser/0a800fc9-708b-1066-8170-bf1aac6d3b5f/0a800fc9-708b-1066-8170-bf23161a3ba0"
+                        allowfullscreen>
+                </iframe>
+                <script type="text/javascript"
+                        data-iframe-id="sn-form-footer"
+                        src="https://app.studioninja.co/client-assets/form-render/assets/scripts/iframeResizer.js"></script>
             </div>
 
         </div>
