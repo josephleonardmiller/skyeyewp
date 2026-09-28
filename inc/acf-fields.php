@@ -365,7 +365,7 @@ function skyeye_register_acf_fields() {
                 'button_label' => 'Add Link',
                 'sub_fields' => [
                     [ 'key' => 'field_ss_footer_label', 'label' => 'Label', 'name' => 'label', 'type' => 'text' ],
-                    [ 'key' => 'field_ss_footer_url',   'label' => 'URL',   'name' => 'url',   'type' => 'url' ],
+                    [ 'key' => 'field_ss_footer_url',   'label' => 'URL',   'name' => 'url',   'type' => 'text' ],
                 ],
             ],
             [ 'key' => 'field_ss_facebook',   'label' => 'Facebook URL',  'name' => 'social_facebook',  'type' => 'url' ],
