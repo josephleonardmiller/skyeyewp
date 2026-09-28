@@ -80,8 +80,8 @@ $vimeo_url     = get_field( 'social_vimeo', 'option' );
                         class="flex h-9 w-9 items-center justify-center rounded-full border border-white text-white hover:bg-white hover:text-black transition-all duration-300"
                         aria-label="Facebook"
                     >
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                        <svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4" aria-hidden="true">
+                            <path d="M9.198 21.5h4v-8.01h3.604l.396-3.98h-4V7.5a1 1 0 0 1 1-1h3v-4h-3a5 5 0 0 0-5 5v2.01h-2l-.396 3.98h2.396v8.01Z"/>
                         </svg>
                     </a>
                     <?php endif; ?>
@@ -94,10 +94,10 @@ $vimeo_url     = get_field( 'social_vimeo', 'option' );
                         class="flex h-9 w-9 items-center justify-center rounded-full border border-white text-white hover:bg-white hover:text-black transition-all duration-300"
                         aria-label="Instagram"
                     >
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4" aria-hidden="true">
+                            <rect x="2" y="2" width="20" height="20" rx="5"/>
                             <circle cx="12" cy="12" r="4"/>
-                            <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/>
+                            <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
                         </svg>
                     </a>
                     <?php endif; ?>
@@ -110,8 +110,8 @@ $vimeo_url     = get_field( 'social_vimeo', 'option' );
                         class="flex h-9 w-9 items-center justify-center rounded-full border border-white text-white hover:bg-white hover:text-black transition-all duration-300"
                         aria-label="Vimeo"
                     >
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                            <path d="M23.977 6.416c-.105 2.338-1.739 5.543-4.894 9.609-3.268 4.247-6.026 6.37-8.29 6.37-1.409 0-2.578-1.294-3.553-3.881L5.322 13.4C4.603 10.812 3.834 9.518 3.01 9.518c-.179 0-.806.378-1.881 1.132L0 9.148c1.185-1.044 2.351-2.087 3.501-3.132C5.08 4.637 6.266 3.825 7.055 3.76c1.865-.18 3.013 1.098 3.45 3.829.465 2.98.788 4.83.971 5.453.537 2.44 1.124 3.654 1.765 3.654.498 0 1.246-.787 2.247-2.357 1-.568 1.57-2.522 1.707-2.928.15-.487.232-.967.232-1.438 0-1.152-.33-1.728-.987-1.728-.352 0-.714.08-1.083.241.72-2.354 2.09-3.498 4.113-3.43 1.502.045 2.21 1.019 2.507 2.96z"/>
+                        <svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4" aria-hidden="true">
+                            <path d="M22 7.42c-.09 2.01-1.5 4.77-4.2 8.28C15 19.33 12.55 21 10.56 21c-1.21 0-2.23-1.12-3.05-3.34l-1.67-6.08C5.17 9.36 4.46 8.18 3.7 8.18c-.16 0-.72.34-1.67.99L1 7.77c1.04-.91 2.07-1.82 3.07-2.73C5.4 3.88 6.4 3.15 7.08 3.09c1.62-.16 2.62.95 3 3.32.4 2.56.68 4.15.84 4.69.46 2.1.97 3.14 1.52 3.14.43 0 1.08-.68 1.94-2.03.86-1.35 1.32-2.38 1.38-3.09.12-1.17-.34-1.76-.97-1.76-.34 0-.7.08-1.07.24.71-2.33 2.07-3.46 4.07-3.4 1.49.05 2.19.99 2.21 2.21z"/>
                         </svg>
                     </a>
                     <?php endif; ?>
