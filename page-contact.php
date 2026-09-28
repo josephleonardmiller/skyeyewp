@@ -6,7 +6,6 @@
 get_header();
 
 $video_url   = get_field( 'background_video_url' ) ?: 'https://res.cloudinary.com/dbpg2xuhs/video/upload/q_auto,vc_vp9,w_1280,c_limit,f_auto/Websiteheader_fbordq.mp4';
-$form_id     = (int) get_field( 'form_id' ) ?: 1;
 $ireland_img = SKYEYE_URI . '/assets/images/ireland.png';
 ?>
 
@@ -17,13 +16,15 @@ $ireland_img = SKYEYE_URI . '/assets/images/ireland.png';
         <div class="flex min-h-screen w-full flex-col justify-center bg-brand-200 px-5 pb-15 pt-[6.25rem] md:ml-auto md:w-1/2 md:px-[5.625rem] md:pb-[7.5rem] md:pt-[11.25rem]">
             <h2 class="font-heading text-[3rem] leading-tight text-white mb-8">Get in touch</h2>
 
-            <?php if ( function_exists( 'gravity_form' ) ) : ?>
-                <div data-form-section>
-                    <?php gravity_form( $form_id, false, false, false, null, true ); ?>
-                </div>
-            <?php else : ?>
-                <?php get_template_part( 'templates/partials/contact-form' ); ?>
-            <?php endif; ?>
+            <iframe height="782"
+                    style="min-width:100%;max-width:570px;border:0;"
+                    id="sn-form-o3x5d"
+                    src="https://app.studioninja.co/contactform/parser/0a800fc9-708b-1066-8170-bf1aac6d3b5f/0a800fc9-708b-1066-8170-bf23161a3ba0"
+                    allowfullscreen>
+            </iframe>
+            <script type="text/javascript"
+                    data-iframe-id="sn-form-o3x5d"
+                    src="https://app.studioninja.co/client-assets/form-render/assets/scripts/iframeResizer.js"></script>
         </div>
     </div>
 
