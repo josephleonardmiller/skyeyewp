@@ -353,7 +353,7 @@ function skyeye_register_acf_fields() {
                 'button_label' => 'Add Link',
                 'sub_fields' => [
                     [ 'key' => 'field_ss_nav_label', 'label' => 'Label', 'name' => 'label', 'type' => 'text' ],
-                    [ 'key' => 'field_ss_nav_url',   'label' => 'URL',   'name' => 'url',   'type' => 'url' ],
+                    [ 'key' => 'field_ss_nav_url',   'label' => 'URL',   'name' => 'url',   'type' => 'text' ],
                 ],
             ],
             [
