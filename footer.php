@@ -55,22 +55,12 @@ $vimeo_url     = get_field( 'social_vimeo', 'option' );
 
         </div>
 
-        <!-- Bottom row: "Made in Ireland" + copyright left, social icons right -->
-        <div class="flex flex-wrap items-center justify-between mt-8">
+        <!-- Bottom row: mobile = social → Made in Ireland → copyright | desktop = left/right -->
+        <div class="flex flex-col md:flex-row md:items-center mt-8">
 
-            <div class="w-full md:w-auto">
-                <div class="flex items-center">
-                    <span class="font-heading text-[0.875rem] leading-normal tracking-[0.5px] text-white/50 mr-[1.125rem]">
-                        <?php echo esc_html( $footer_note ); ?>
-                    </span>
-                    <span class="text-[0.75rem] leading-normal tracking-[0.2px] text-white/50">
-                        &copy; <?php echo esc_html( date( 'Y' ) ); ?> <?php echo esc_html( $company ); ?>. All Rights Reserved.
-                    </span>
-                </div>
-            </div>
-
-            <div class="w-full md:w-auto md:text-right mt-6 md:mt-0">
-                <div class="flex items-center md:justify-end gap-[1.25rem]">
+            <!-- Social icons: first on mobile, pushed right on desktop -->
+            <div class="order-1 md:order-3 md:ml-auto mb-6 md:mb-0">
+                <div class="flex items-center gap-[1.25rem]">
 
                     <?php if ( $facebook_url ) : ?>
                     <a
@@ -118,6 +108,16 @@ $vimeo_url     = get_field( 'social_vimeo', 'option' );
 
                 </div>
             </div>
+
+            <!-- Made in Ireland: second on mobile, first on desktop -->
+            <span class="order-2 md:order-1 font-heading text-[0.875rem] leading-normal tracking-[0.5px] text-white/50 whitespace-nowrap mb-3 md:mb-0 md:mr-[1.125rem]">
+                <?php echo esc_html( $footer_note ); ?>
+            </span>
+
+            <!-- Copyright: last on mobile and desktop -->
+            <span class="order-3 md:order-2 text-[0.75rem] leading-normal tracking-[0.2px] text-white/50">
+                &copy; <?php echo esc_html( date( 'Y' ) ); ?> <?php echo esc_html( $company ); ?>. All Rights Reserved.
+            </span>
 
         </div>
     </div>
