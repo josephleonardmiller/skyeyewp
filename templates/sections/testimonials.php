@@ -20,14 +20,14 @@ $posts = get_sub_field( 'testimonial_items' ) ?: [];
                     <!-- Quote text — slides stacked, animated in/out -->
                     <div class="relative mt-[2.5rem] overflow-hidden text-left" data-testi-quote-area>
                         <!-- Spacer to give the area height (first slide, hidden) -->
-                        <div class="invisible font-heading text-[1.625rem] leading-[2.2] tracking-[0.5px]" aria-hidden="true">
+                        <div class="invisible font-heading text-[1.125rem] leading-[1.7] md:text-[1.625rem] md:leading-[2.2] tracking-[0.5px]" aria-hidden="true">
                             <?php echo esc_html( $posts[0]->post_title ); ?>
                         </div>
                         <?php foreach ( $posts as $i => $item ) :
                             $quote = get_field( 'quote', $item->ID );
                         ?>
                         <div
-                            class="testimonial-quote <?php echo $i === 0 ? '' : 'absolute inset-0'; ?> font-heading text-[1.625rem] leading-[2.2] tracking-[0.5px] opacity-0 translate-y-full"
+                            class="testimonial-quote <?php echo $i === 0 ? '' : 'absolute inset-0'; ?> font-heading text-[1.125rem] leading-[1.7] md:text-[1.625rem] md:leading-[2.2] tracking-[0.5px] opacity-0 translate-y-full"
                             data-testi-quote
                             data-index="<?php echo esc_attr( $i ); ?>"
                         >
