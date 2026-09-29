@@ -32,7 +32,6 @@ $s3_image       = get_field( 'about_s3_image' );
 $s3_button      = get_field( 'about_s3_button' )     ?: 'Get in touch';
 $s3_button_url  = get_field( 'about_s3_button_url' );
 $cta_bg         = get_field( 'about_cta_bg' ) ?: '#000000';
-$form_id        = (int) ( get_field( 'about_form_id' ) ?: 1 );
 
 if ( have_posts() ) { while ( have_posts() ) { the_post(); } }
 
@@ -250,18 +249,17 @@ $portfolio_url = get_post_type_archive_link( 'portfolio' ) ?: '/portfolio';
                 <p class="font-body text-[1.125rem] text-white/70">We just need a few details</p>
             </div>
 
-            <!-- Right: Gravity Form -->
+            <!-- Right: Studio Ninja Form -->
             <div class="about-contact-form" data-form-section>
-                <?php if ( function_exists( 'gravity_form' ) ) : ?>
-                    <?php gravity_form( $form_id, false, false, false, null, true ); ?>
-                <?php else : ?>
-                    <p class="font-body text-white/70 text-[1.125rem]">
-                        <a href="<?php echo esc_url( $contact_url ); ?>"
-                           class="text-[#bcac8e] underline underline-offset-4">
-                            Visit our contact page →
-                        </a>
-                    </p>
-                <?php endif; ?>
+                <iframe height="782"
+                        style="min-width:100%;max-width:none;border:0;"
+                        id="sn-form-about"
+                        src="https://app.studioninja.co/contactform/parser/0a800fc9-708b-1066-8170-bf1aac6d3b5f/0a800fc9-708b-1066-8170-bf23161a3ba0"
+                        allowfullscreen>
+                </iframe>
+                <script type="text/javascript"
+                        data-iframe-id="sn-form-about"
+                        src="https://app.studioninja.co/client-assets/form-render/assets/scripts/iframeResizer.js"></script>
             </div>
 
         </div>
