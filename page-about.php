@@ -237,28 +237,31 @@ $portfolio_url = get_post_type_archive_link( 'portfolio' ) ?: '/portfolio';
 </section>
 
 <!-- ── Get In Touch ───────────────────────────────────────────────────────── -->
-<section class="relative overflow-hidden" style="background-color:<?php echo esc_attr( $cta_bg ?: '#000000' ); ?>;">
-
-    <div class="relative z-10 px-6 lg:px-[8.5%] py-24 lg:py-32">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-[7%] items-start">
+<section class="form-section bg-brand-200 py-[3.75rem] md:py-[8.125rem] overflow-hidden">
+    <div class="container mx-auto px-6 lg:px-16">
+        <div class="flex flex-wrap items-start">
 
             <!-- Left: heading -->
-            <div>
-                <p class="font-heading text-[2.625rem] lg:text-[6.75rem] text-white leading-none" style="letter-spacing:-2px;">Get in</p>
-                <p class="font-heading text-[2.625rem] lg:text-[6.75rem] text-white leading-none mb-8" style="letter-spacing:-2px;">touch</p>
-                <p class="font-body text-[1.125rem] text-white/70">We just need a few details</p>
+            <div class="flex w-full md:w-1/2 justify-center md:justify-start">
+                <div class="relative text-center md:text-left">
+                    <h2 class="mt-[0.1875rem] font-heading text-[3.25rem] md:text-[6.75rem] leading-normal tracking-[-2.5px] text-white">
+                        <div>Get in</div>
+                        <div class="-mt-[1.5rem] md:pl-[10rem]">touch</div>
+                    </h2>
+                    <p class="text-[1.125rem] text-white text-center md:text-right mt-[0.625rem]">We just need a few details</p>
+                </div>
             </div>
 
             <!-- Right: Studio Ninja Form -->
-            <div class="about-contact-form" data-form-section>
+            <div class="mt-[1.875rem] w-full md:-mt-[0.9375rem] md:w-1/2">
                 <iframe height="782"
                         style="min-width:100%;max-width:none;border:0;"
-                        id="sn-form-about"
+                        id="sn-form-xuhna"
                         src="https://app.studioninja.co/contactform/parser/0a800fc9-708b-1066-8170-bf1aac6d3b5f/0a800fc9-708b-1066-8170-bf23161a3ba0"
                         allowfullscreen>
                 </iframe>
                 <script type="text/javascript"
-                        data-iframe-id="sn-form-about"
+                        data-iframe-id="sn-form-xuhna"
                         src="https://app.studioninja.co/client-assets/form-render/assets/scripts/iframeResizer.js"></script>
             </div>
 
