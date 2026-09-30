@@ -44,3 +44,7 @@ jobs:
             -e "ssh -p ${{ secrets.HOSTINGER_PORT }} -o StrictHostKeyChecking=no" \
             ./ \
             ${{ secrets.HOSTINGER_USER }}@${{ secrets.HOSTINGER_HOST }}:${{ secrets.HOSTINGER_PATH }}
+
+      - name: Clear OPcache
+        run: |
+          curl -s "https://skyeyeweddingfilms.com/wp-content/themes/skyeye/opcache-clear.php"
